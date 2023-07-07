@@ -1,12 +1,22 @@
 #include "game/level.hpp"
 #include <stdexcept>
+#include <cmath>
 
 using game::Level;
 
 Level::ChunkPos Level::hash_chunk_pos(int x, int y)
 {
+    
     ChunkPos pos = (y << 16) | (x & 0xffff);
-    if((x & 0xffff0000) || (y & 0xffff0000))
+    u32 _out = 0xffff0000;
+    if(x >= 0 && (x & _out))
+        throw std::runtime_error("Invalid chunk coords");
+    if(y >= 0 && (y & _out))
+        throw std::runtime_error("Invalid chunk coords");
+
+    if(x < 0 && (x & _out) != _out)
+        throw std::runtime_error("Invalid chunk coords");
+    if(y < 0 && (y & _out) != _out)
         throw std::runtime_error("Invalid chunk coords");
 
     return pos;
