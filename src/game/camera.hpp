@@ -8,7 +8,7 @@ namespace game
 {
     struct Camera
     {
-        Point mid {0, 0};
+        Point mid {16, 16};
         float zoom = 1.0f;
 
         Point pos();

@@ -38,9 +38,9 @@ namespace game
         return tile;
     }
 
-    inline bool operator == (Tile, Tile)
+    inline bool operator == (Tile a, Tile b)
     {
-        return true;
+        return a.type == b.type;
     }
 }
 

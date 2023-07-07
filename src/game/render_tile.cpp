@@ -26,7 +26,7 @@ void game::render_tile(int x, int y)
     static auto wall_tex = load_texture(wall_path);
     static auto floor_tex = load_texture(floor_path);
     struct RNG_Token;
-    static u32 hash_extra = random<0x0000, 0xffff,
+    static int hash_extra = random<0x0000, 0xffff,
                                    RNG_Token>();
 
     Tile tile = level().at(x, y);
@@ -45,11 +45,11 @@ void game::render_tile(int x, int y)
     }
 
     // Using some big prime numbers to hash
-    u32 hash = hash_extra + x * 7901 + y * 7919;
+    int hash = hash_extra + x * 7901 + y * 7919;
 
     SDL_Rect src {
-        64 * ((hash / 4) % 4),
-        64 * (hash % 4),
+        64 * ((hash / 4) & 0x3),
+        64 * (hash & 0x3),
         64, 64
     };
 

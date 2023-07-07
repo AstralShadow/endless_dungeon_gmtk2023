@@ -85,6 +85,8 @@ At least my textures are below prototype level :D
 # Gameplay
 - [x] Camera
     - [x] Store center for easier zoom
+    - [ ] Movement controls
+    - [ ] Zoom controls
     - [ ] Test Camera::apply
 
 - [ ] Level
