@@ -4,5 +4,9 @@
 
 - [ ] Add "Created for" to logo in `assets/jamlogo2023.png`
     - Try not to make the image bigger than `1500x1100`
-    - The file name is defined in `src/startup/logo.hpp`
+    - File: `src/startup/logo.hpp`
+        - contains image filename
+        - contains timing variables
+    - Original image in `doc/gmtk/jamlogo2023.png`
+
     
