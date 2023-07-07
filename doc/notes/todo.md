@@ -30,6 +30,18 @@ Corridors will be what players create to play.
 > 22:40
 Adding Camera
 
+> 22:52
+Adding Level
+
+> 23:00
+Decided to make Tile Wrapper
+
+> 23:29
+Decided to store tiles in chunks
+
+> 00:00
+Finished Level's Chunk and Tile Wrapper.
+I haven't tested them tho.
 
 
 # Utility
@@ -61,6 +73,9 @@ Adding Camera
     - [ ] Editing
         - [ ] User interface
         - [ ] Time control
+    - [x] Chunks
+        - [ ] Move the world if position goes too high
+            `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
 
 
 - [ ] Treasures
