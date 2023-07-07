@@ -4,6 +4,13 @@
 using game::Camera;
 
 
+Camera& game::camera()
+{
+    static Camera _camera;
+    return _camera;
+}
+
+
 Point Camera::pos()
 {
     auto size = screen_size();
@@ -25,6 +32,25 @@ FPoint Camera::fpos()
     return {
         mid.x - size.x / (zoom * 2),
         mid.y - size.y / (zoom * 2)
+    };
+}
+
+
+Point Camera::size()
+{
+    auto size = screen_size();
+    return {
+        static_cast<int>(size.x / zoom),
+        static_cast<int>(size.y / zoom)
+    };
+}
+
+FPoint Camera::fsize()
+{
+    auto size = screen_size();
+    return {
+        size.x / zoom,
+        size.y / zoom
     };
 }
 
