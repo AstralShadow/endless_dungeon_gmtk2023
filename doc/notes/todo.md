@@ -9,6 +9,27 @@ Created GMTK logo pop-up at startup.
 Leaving some part of the startup for later
 Going to plan some tasks
 
+> 22:30
+Pause
+
+> 22:35
+Going to plan the level structure.
+I kind of want it to not be size-limited.
+Instead it should be endless in any direction.
+The player should be able to see nearby areas
+ so that they can plan the Hero's path.
+
+I think i want some kind of structure that
+ behave as endless tile map and uses some
+ internal compression & area generation.
+Areas that get too far should as well be cleaned.
+A good idea would be to introduce collapsing rooms/corridors. (And rooms & corridors as structures)
+
+Corridors will be what players create to play.
+
+> 22:40
+Adding Camera
+
 
 
 # Utility
@@ -31,6 +52,10 @@ Going to plan some tasks
 
 
 # Gameplay
+- [x] Camera
+    - [x] Store center for easier zoom
+    - [ ] Test Camera::apply
+
 - [ ] Level
     - [ ] Generation of areas
     - [ ] Editing
