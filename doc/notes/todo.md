@@ -43,6 +43,11 @@ Decided to store tiles in chunks
 Finished Level's Chunk and Tile Wrapper.
 I haven't tested them tho.
 
+> 00:45
+Took some rest.
+Adding spawn area.
+
+
 
 # Utility
 - [x] Graphic loading
@@ -69,13 +74,14 @@ I haven't tested them tho.
     - [ ] Test Camera::apply
 
 - [ ] Level
-    - [ ] Generation of areas
-    - [ ] Editing
-        - [ ] User interface
-        - [ ] Time control
     - [x] Chunks
         - [ ] Move the world if position goes too high
             `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
+    - [ ] Generation of areas
+        - [x] Spawn area
+    - [ ] Editing
+        - [ ] User interface
+        - [ ] Time control
 
 
 - [ ] Treasures

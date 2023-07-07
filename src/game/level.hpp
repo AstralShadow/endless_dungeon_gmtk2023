@@ -23,14 +23,14 @@ namespace game
         ~Level();
 
 
-        // TODO provide a copy of Tile that gets stored in the wrapper, and updated on-change in the map. It does not seem as an easy thing so for now just don't pass Tile& around.
-
         /**
          * Wraps tiles so we can update the Level
          *  when new tiles get defined
          */
         struct TileWrapper
         {
+            // TODO provide a copy of Tile that gets stored in the wrapper, and updated on-change in the map. It does not seem as an easy thing so for now just don't pass Tile& around.
+
             Level* parent;
             Point pos;
 
