@@ -39,13 +39,27 @@ Decided to make Tile Wrapper
 > 23:29
 Decided to store tiles in chunks
 
-> 00:00
+> 00:00, 2023-07-08
 Finished Level's Chunk and Tile Wrapper.
 I haven't tested them tho.
 
 > 00:45
 Took some rest.
 Adding spawn area.
+
+> 00:55
+Creating wall and floor texture formats.
+Creating placeholder textures.
+
+> 01:25
+Described the texture format in `tasks_alaka.md`
+
+> 01:50
+Currently working on tile rendering.
+I kind of realized i should've went for the prototype..
+
+> 02:02
+At least my textures are below prototype level :D
 
 
 
@@ -77,6 +91,8 @@ Adding spawn area.
     - [x] Chunks
         - [ ] Move the world if position goes too high
             `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
+    - [ ] Rendering level map
+        - [ ] Assure border is properly rendered
     - [ ] Generation of areas
         - [x] Spawn area
     - [ ] Editing

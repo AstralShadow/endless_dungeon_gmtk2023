@@ -6,7 +6,7 @@
 
 - [ ] Add "Created for" to logo in `assets/jamlogo2023.png`
     - Try not to make the image bigger than `1500x1100`
-    - File: `src/startup/logo.hpp`
+    - Code: `src/startup/logo.hpp`
         - contains image filename
         - contains timing variables
     - Original image in `doc/gmtk/jamlogo2023.png`
@@ -15,6 +15,7 @@
     - Files: `assets/wall_solid.png` `assets/floor_grass.png`,
     - GIMP: `doc/gimp/azcraft/wall_solid.xcf`
     - They contain `4x4` tiles with `64x64` size (total size `256x256`)
+    - Code: `src/game/render_tile.hpp`
     - The game picks random tile for every place.
     - If you want and have time you can make multiple versions for multiple game areas. (like different cave textures)
         - Not yet implemented in code.
