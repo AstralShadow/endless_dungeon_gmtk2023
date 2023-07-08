@@ -12,7 +12,13 @@ using std::vector;
 
 void game::balance_dijkstra_tile(Point pos)
 {
-    balance_dijkstra_tiles({pos});
+    balance_dijkstra_tiles({
+        pos,
+        {pos.x - 1, pos.y},
+        {pos.x + 1, pos.y},
+        {pos.x, pos.y - 1},
+        {pos.x, pos.y + 1}
+    });
 }
 
 
@@ -24,6 +30,8 @@ balance_dijkstra_tiles(std::set<Point> tiles)
     std::queue<Point> next;
     for(auto p : tiles)
         next.push(p);
+
+    int modified_count = tiles.size();
 
 
     while(next.size() > 0) {
@@ -41,15 +49,31 @@ balance_dijkstra_tiles(std::set<Point> tiles)
             {pos.x, pos.y - 1},
             {pos.x, pos.y + 1}
         };
-        bool modified = false;
+        bool modified = (modified_count > 0);
+        modified_count--;
+        if(update_tile_value(pos)) {
+            modified = true;
+            tile = level.at(pos);
+        }
 
         for(auto other_pos : neighbours) {
             Tile other = level.at(other_pos);
             if(other == default_tile())
                 continue;
 
-            if(other.interest + 10 < tile.interest)
-                tile.interest = other.interest + 10;
+            if(other.interest + 5 < tile.interest) {
+                tile.interest = other.interest + 5;
+                modified = true;
+                next.push(pos); // needs: interest_path
+            }
+
+            if(other.interest_path - 1
+                 > tile.interest_path)
+            {
+                tile.interest_path
+                    = other.interest_path - 1;
+                modified = true;
+            }
         }
 
         if(modified) {

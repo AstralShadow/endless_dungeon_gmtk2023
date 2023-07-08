@@ -41,8 +41,9 @@ void game::update_dijkstra_maps(Point tile)
         cout << tile.x << ":" << tile.y << endl;
     }
 
-    if(update_tile_value(tile))
-        balance_dijkstra_tile(tile);
+    update_tile_value(tile);
+
+    balance_dijkstra_tile(tile);
 }
 
 

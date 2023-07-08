@@ -36,7 +36,8 @@ namespace game
 
 
         /* Dijkstra maps */
-        u32 interest = 0xffffffff; // 0 = explored
+        int interest = 0xffffff; // 0 = explored
+        int interest_path = 0; // 0 = not interested
     };
 
     const Point tile_size {32, 32};
@@ -90,6 +91,23 @@ namespace game
         }
 
         return true;
+    }
+
+    inline bool can_see_trough(Tile a)
+    {
+        switch(a.type) {
+            case Tile::T_GROUND:
+            case Tile::T_PATH:
+                return true;
+
+            case Tile::T_WALL:
+                return false;
+
+            case Tile::T_LAST:
+                return false;
+        }
+
+        return false;
     }
 
 }

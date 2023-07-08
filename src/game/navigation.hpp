@@ -1,6 +1,7 @@
 #ifndef INCLUDE_GAME_NAVIGATION_HPP
 #define INCLUDE_GAME_NAVIGATION_HPP
 
+#include "utils/types.hpp"
 #include "utils/point.hpp"
 #include <set>
 
@@ -20,6 +21,13 @@ namespace game
     /** Updates map starting from tile */
     void balance_dijkstra_tile(Point tile);
     void balance_dijkstra_tiles(std::set<Point> tiles);
+
+
+    bool is_visible(Point t1, Point t2);
+
+    /** Controls Dijkstra map value decaying */
+    bool tick_tile_value(Point tile);
+    void tick_tile_values(u32 ms);
 }
 
 #endif // INCLUDE_GAME_NAVIGATION_HPP

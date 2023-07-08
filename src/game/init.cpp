@@ -12,9 +12,9 @@ void game::init(int, char**, scene_uid)
 {
     generate_spawn();
 
-    update_dijkstra_maps();
-
     hero().move_to({0, 0});
+
+    update_dijkstra_maps();
 }
 
 

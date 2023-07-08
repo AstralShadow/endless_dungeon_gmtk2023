@@ -73,6 +73,7 @@ namespace game
         void remove_chunk(int x, int y);
 
         friend void update_dijkstra_maps();
+        friend void tick_tile_values(u32 ms);
     };
 
     Level& level();
