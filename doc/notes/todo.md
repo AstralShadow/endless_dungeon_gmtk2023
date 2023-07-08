@@ -92,6 +92,10 @@ Currently working on Dijkstra maps inspired by:
 > 13:37
 Working on map exploration (interest)
 
+> 16:30
+Dijkstra maps were hard to get right the first time.
+Now they work.
+I'll add Hero stats
 
 
 # Utility
@@ -142,8 +146,8 @@ Working on map exploration (interest)
 - [x] Hero
     - [x] Rendering
         - [ ] Rendering textures
-    - [ ] Movement
-        - [ ] Animation
+    - [x] Movement
+        - [x] Animation
     - [ ] Actions
         - [ ] Animation?
     - [ ] Stats

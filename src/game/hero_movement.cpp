@@ -15,18 +15,22 @@ using std::vector;
 
 void game::tick_hero_movement(u32 ms)
 {
+    auto& level = game::level();
+
     auto& hero = game::hero();
     auto& pos = hero.pos;
     auto& animation_pos = hero.animation_pos;
 
-    float motion = hero_speed * ms / 1000;
+    float motion = hero.speed * ms / 1000;
+
+    bool reset_animation = false;
 
     if(animation_pos.x > tile_size.x) {
         hero.move_to({
             pos.x + 1,
             pos.y
         });
-        animation_pos.x -= tile_size.x;
+        reset_animation = true;
     }
 
     if(animation_pos.x < -tile_size.x) {
@@ -34,7 +38,7 @@ void game::tick_hero_movement(u32 ms)
             pos.x - 1,
             pos.y
         });
-        animation_pos.x += tile_size.x;
+        reset_animation = true;
     }
 
     if(animation_pos.y > tile_size.y) {
@@ -42,7 +46,7 @@ void game::tick_hero_movement(u32 ms)
             pos.x,
             pos.y + 1
         });
-        animation_pos.y -= tile_size.y;
+        reset_animation = true;
     }
 
     if(animation_pos.y < -tile_size.y) {
@@ -50,21 +54,38 @@ void game::tick_hero_movement(u32 ms)
             pos.x,
             pos.y - 1
         });
-        animation_pos.y += tile_size.y;
+        reset_animation = true;
     }
 
-    int is_idle = 2;
-
-    if(std::abs(animation_pos.x) < 0.9 * motion) {
+    if(reset_animation) {
         animation_pos.x = 0;
-        is_idle--;
-    }
-    if(std::abs(animation_pos.y) < 0.9 * motion) {
         animation_pos.y = 0;
-        is_idle--;
     }
 
-    if(is_idle != 0) {
+
+    /* Fix walking into walls */
+    {
+        Point other = pos;
+        if(animation_pos.x < 0)
+            other.x -= 1;
+        else if(animation_pos.x > 0)
+            other.x += 1;
+        else if(animation_pos.y < 0)
+            other.y -= 1;
+        else if(animation_pos.y > 0)
+            other.y += 1;
+
+        Tile other_tile = level.at(other);
+        if(!can_hero_walk_on(other_tile)) {
+            animation_pos.x = 0;
+            animation_pos.y = 0;
+        }   
+    }
+
+    bool is_idle = animation_pos.x == 0
+                  && animation_pos.y == 0;
+
+    if(!is_idle) {
         if(animation_pos.x < 0)
             animation_pos.x -= motion;
         else if(animation_pos.x > 0)
@@ -76,8 +97,6 @@ void game::tick_hero_movement(u32 ms)
 
         return;
     }
-
-    auto& level = game::level();
 
     vector<Point> neighbours = {
         {pos.x - 1, pos.y},
@@ -108,9 +127,6 @@ void game::tick_hero_movement(u32 ms)
         neighbours[index].x - pos.x,
         neighbours[index].y - pos.y,
     };
-
-    cout << delta.x << ":" << delta.y << endl;
-    cout << motion << endl;
 
     animation_pos.x += delta.x * motion;
     animation_pos.y += delta.y * motion;

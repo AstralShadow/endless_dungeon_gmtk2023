@@ -9,6 +9,18 @@ bool game::is_visible(Point t1, Point t2)
         return true;
 
 
+    const int taxicab_vision_limit = 8;
+    Point delta {
+        t1.x - t2.x,
+        t1.y - t2.y
+    };
+
+    int taxicab_distance = std::abs(delta.x)
+                           + std::abs(delta.y);
+    if(taxicab_distance > taxicab_vision_limit)
+        return false;
+
+
     auto& level = game::level();
 
     if(t1.x == t2.x) {
@@ -36,19 +48,7 @@ bool game::is_visible(Point t1, Point t2)
     }
 
 
-    /*
     // TODO use raytracing
-    const int taxicab_vision = 10;
-    Point delta {
-        t1.x - t2.x,
-        t1.y - t2.y
-    };
-
-    int taxicab_distance = std::abs(delta.x)
-                           + std::abs(delta.y);
-    if(taxicab_distance < taxicab_vision)
-        return true;
-    */
 
     return false;
 }
