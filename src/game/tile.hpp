@@ -15,7 +15,8 @@ namespace game
         enum Type : u8
         {
             T_WALL,
-            T_GROUND,
+            T_GROUND, // auto-generated
+            T_PATH, // made by player
 
             T_LAST
         };
@@ -35,6 +36,13 @@ namespace game
     {
         Tile tile;
         tile.type = Tile::T_GROUND;
+        return tile;
+    }
+
+    inline Tile path_tile()
+    {
+        Tile tile;
+        tile.type = Tile::T_PATH;
         return tile;
     }
 

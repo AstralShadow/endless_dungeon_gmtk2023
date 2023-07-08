@@ -76,6 +76,11 @@ Adding Camera::undo
 > 03:48
 Added last camera movement and disabled flag for it
 
+> 03:59
+Added camera scroll-to-zoom functionality.
+I wanted it better (with respect to cursor position)
+ but i don't want to waste time on this.
+
 
 # Utility
 - [x] Graphic loading
@@ -99,19 +104,19 @@ Added last camera movement and disabled flag for it
 # Gameplay
 - [x] Camera
     - [x] Store center for easier zoom
-    - [ ] Movement controls
-    - [ ] Zoom controls
-    - [ ] Test Camera::apply
+    - [x] Movement controls
+    - [x] Zoom controls
+    - [x] Test Camera::apply
 
 - [ ] Level
     - [x] Chunks
         - [ ] Move the world if position goes too high
             `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
-    - [ ] Rendering level map
+    - [x] Rendering level map
         - [ ] Assure border is properly rendered
     - [ ] Generation of areas
         - [x] Spawn area
-    - [ ] Editing
+    - [x] Editing
         - [ ] User interface
         - [ ] Time control
 

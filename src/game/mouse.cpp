@@ -1,5 +1,6 @@
 #include "game/game.hpp"
 #include "game/camera.hpp"
+#include "game/level.hpp"
 #include "utils/screen.hpp"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_mouse.h>
@@ -8,12 +9,36 @@
 void game::
 mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
 {
+    auto& camera = game::camera();
+    auto& level = game::level();
+
     if(ev.state & SDL_BUTTON_MMASK) {
         // Dragging camera
 
-        auto& camera = game::camera();
         camera.mid.x -= ev.xrel / camera.zoom;
         camera.mid.y -= ev.yrel / camera.zoom;
+    }
+
+    if(ev.state & SDL_BUTTON_RMASK) {
+        // Remove ground
+        Point pos {ev.x, ev.y};
+        camera.undo(pos);
+        int x = pos.x >> 5;
+        int y = pos.y >> 5;
+        Tile current = level.at(x, y);
+        if(current == path_tile())
+            level.at(x, y) = default_tile();
+    }
+
+    if(ev.state & SDL_BUTTON_LMASK) {
+        // Add ground
+        Point pos {ev.x, ev.y};
+        camera.undo(pos);
+        int x = pos.x >> 5;
+        int y = pos.y >> 5;
+        Tile current = level.at(x, y);
+        if(current == default_tile())
+            level.at(x, y) = path_tile();
     }
 }
 

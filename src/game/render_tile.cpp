@@ -37,6 +37,7 @@ void game::render_tile(int x, int y)
             tex = wall_tex;
             break;
         case Tile::T_GROUND:
+        case Tile::T_PATH:
             tex = floor_tex;
             break;
 
