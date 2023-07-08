@@ -54,6 +54,16 @@
         - all 4 lines
         - unused texture
 
+- [ ] Player-drawn ground
+    - If you want you can make ground that the player adds with different textures
 
 - [ ] Hero (main character)
     - Size: `64x64` or `64x128`
+
+- [ ] Status bars
+    - Files: `assets/health_bar_empty.png` `assets/stamina_bar_empty.png` `assets/xp_bar_empty.png` `assets/health_bar.png` `assets/stamina_bar.png` `assets/xp_bar.png`
+    - GIMP: `doc/gimp/azcraft/status_bars.xcf`
+    - Every bar has empty and normal state.
+        When drawing, the normal bar will be cut and drawn over the empty one.
+        You can add any icons in the image and they will act like part of the bar.
+
