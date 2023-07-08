@@ -35,7 +35,7 @@ enum BarIndex
     BAR_INDEX_LAST
 };
 
-static const string bars[BAR_INDEX_LAST] {
+static const string bars[BAR_INDEX_LAST + 1] {
     "assets/health_bar.png",
     "assets/health_bar_empty.png",
 
@@ -44,17 +44,19 @@ static const string bars[BAR_INDEX_LAST] {
 
     "assets/xp_bar.png",
     "assets/xp_bar_empty.png",
+
+    "assets/bar_bg.png",
 };
 
-static SDL_Texture* textures[BAR_INDEX_LAST];
-static SDL_Point tex_size[BAR_INDEX_LAST];
+static SDL_Texture* textures[BAR_INDEX_LAST + 1];
+static SDL_Point tex_size[BAR_INDEX_LAST + 1];
 
 
 void game::render_ui_bars()
 {
     [[maybe_unused]]
     static u8 _loaded = [](){
-        for(int i = 0; i < BAR_INDEX_LAST; ++i) {
+        for(int i = 0; i < BAR_INDEX_LAST + 1; ++i) {
             auto surf = utils::load_surface(bars[i]);
             if(!surf) {
                 textures[i] = nullptr;
@@ -69,8 +71,26 @@ void game::render_ui_bars()
         return 0;
     }();
 
-
     auto& hero = game::hero();
+    auto screen = screen_size();
+
+
+    /* Background */
+    int i_bg = BAR_INDEX_LAST;
+
+    SDL_Rect bg_dest {
+        screen.x * 0.025,
+        screen.y * 0.015,
+        screen.x * 0.45,
+        screen.y * 0.05 + screen.x * 0.4
+            * tex_size[i_bg].y / tex_size[i_bg].x
+    };
+
+    SDL_RenderCopy(rnd, textures[i_bg],
+                   nullptr, &bg_dest);
+
+
+
 
     float values[BAR_INDEX_LAST / 2] {
         1.0f * hero.health / hero.max_health,
@@ -79,14 +99,14 @@ void game::render_ui_bars()
     };
 
     SDL_Rect dest {
-        20, 20,
+        screen.x * 0.05,
+        screen.y * 0.05,
         0, 0
     };
     SDL_Rect src {
         0, 0, 0, 0
     };
 
-    auto screen = screen_size();
 
     for(int i = 0; i < BAR_INDEX_LAST / 2; ++i)
     {
