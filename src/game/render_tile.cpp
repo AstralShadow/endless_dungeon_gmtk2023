@@ -17,8 +17,8 @@ using std::endl;
 
 static auto& rnd = core::renderer;
 
-static string wall_path = "assets/wall_solid.png";
-static string floor_path = "assets/floor_grass.png";
+static string wall_path = "assets/wall.png";
+static string floor_path = "assets/floor.png";
 
 
 void game::render_tile(int x, int y)
@@ -50,7 +50,7 @@ void game::render_tile(int x, int y)
 
     SDL_Rect src {
         64 * ((hash / 4) & 0x3),
-        64 * (hash & 0x3),
+        64 * (((hash % 3) + 3) % 3),
         64, 64
     };
 
