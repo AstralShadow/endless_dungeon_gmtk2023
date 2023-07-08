@@ -24,8 +24,8 @@ Level::ChunkPos Level::hash_chunk_pos(int x, int y)
 
 Point Level::unhash_chunk_pos(ChunkPos pos)
 {
-    int x = (pos & 0xffff) << 4;
-    int y = (pos & 0xffff0000) >> (16 - 4);
+    int x = static_cast<i16>(pos & 0xffff) << 4;
+    int y = static_cast<i16>((pos & 0xffff0000) >> 16) << 4;
 
     return {x, y};
 }
