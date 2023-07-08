@@ -66,4 +66,18 @@
     - Every bar has empty and normal state.
         When drawing, the normal bar will be cut and drawn over the empty one.
         You can add any icons in the image and they will act like part of the bar.
+    - Size not fixed, but don't make them too big. They should stay on screen.
+    - Try to make all bars with the same size.
+
+- [ ] Time controls
+    - File: `assets/time_controls.png`
+    - GIMP: `doc/gimp/azcraft/time_controls.xcf`
+    - The player can speed up/pause the game with these buttons
+    - Size is 64x64 for 4x1 buttons (256x64 image)
+    - Buttons:
+        - Pause
+        - Normal speed
+        - Faster speed
+        - Fastest speed
+    - Don't use numbers. We don't know how much are these speeds.
 
