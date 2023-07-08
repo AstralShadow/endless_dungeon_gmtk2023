@@ -34,9 +34,10 @@ void game::render(scene_uid)
     depth_order.clear();
 
     auto hero = game::hero();
-    depth_order[hero.pos.y]
+    int hero_y = hero.pos.y + ((hero.animation_pos.y > 0) ? 1 : 0);
+    depth_order[hero_y]
         .push_back({
-            hero.pos.y,
+            hero_y,
             IndexEntry::O_HERO
         });
 

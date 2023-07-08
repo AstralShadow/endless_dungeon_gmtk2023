@@ -36,7 +36,6 @@ balance_dijkstra_tiles(std::set<Point> tiles)
 
     while(next.size() > 0) {
         auto pos = next.front();
-        cout << pos.x << ":" << pos.y << endl;
         next.pop();
 
         Tile tile = level.at(pos);
@@ -61,8 +60,8 @@ balance_dijkstra_tiles(std::set<Point> tiles)
             if(other == default_tile())
                 continue;
 
-            if(other.interest + 5 < tile.interest) {
-                tile.interest = other.interest + 5;
+            if(other.interest + 4 < tile.interest) {
+                tile.interest = other.interest + 4;
                 modified = true;
                 next.push(pos); // needs: interest_path
             }

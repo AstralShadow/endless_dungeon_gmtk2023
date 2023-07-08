@@ -1,5 +1,9 @@
 #include "game/hero.hpp"
 #include "game/level.hpp"
+#include <iostream>
+
+using std::cout;
+using std::endl;
 
 using game::Hero;
 
@@ -18,8 +22,10 @@ Hero::Hero()
 
 void Hero::move_to(Point _pos)
 {
-    if(!can_hero_walk_on(level().at(_pos.x, _pos.y)))
+    if(!can_hero_walk_on(level().at(_pos.x, _pos.y))) {
+        cout << "Tried to walk into wall" << endl;
         return;
+    }
 
     { /** Move away from current tile */
         Tile tile = level().at(pos.x, pos.y);

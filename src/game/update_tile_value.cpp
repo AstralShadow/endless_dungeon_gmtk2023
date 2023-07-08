@@ -6,6 +6,8 @@
 using std::cout;
 using std::endl;
 
+static const bool verbose_log = false;
+
 
 bool game::update_tile_value(Point pos)
 {
@@ -65,9 +67,9 @@ void game::tick_tile_values(u32 ms)
 {
     static u32 store = 0;
     store += ms;
-    if(store < 500)
+    if(store < 100)
         return;
-    store -= 500;
+    store -= 100;
 
 
     std::set<Point> updated;
@@ -85,8 +87,10 @@ void game::tick_tile_values(u32 ms)
         }
     }
 
-    cout << "Dijkstra map tick: ";
-    cout << updated.size() << " tiles" << endl;
+    if(verbose_log) {
+        cout << "Dijkstra map tick: ";
+        cout << updated.size() << " tiles" << endl;
+    }
 
     balance_dijkstra_tiles(updated);
 }

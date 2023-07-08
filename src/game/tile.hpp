@@ -86,6 +86,8 @@ namespace game
         }
 
         switch(a.content) {
+            case Tile::C_NONE:
+                break;
             default:
                 return false;
         }
