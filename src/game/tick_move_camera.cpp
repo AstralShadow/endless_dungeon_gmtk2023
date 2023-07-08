@@ -11,7 +11,7 @@ using config::keyboard::keys_left;
 using config::keyboard::keys_right;
 
 
-const bool enable_border_to_move = true;
+const bool enable_border_to_move = false;
 const int screen_border = 32;
 
 

@@ -17,9 +17,10 @@ namespace game {
     static Hint _hints[H_LAST] {
         { // H_HELLO
             "Hello, Player!\n\n"
-            "Sadly, this game is unfinished.\n"
+            "This game is unfinished.\n"
             "We didn't have anyone capable to do"
                 " Level Design.\n\n"
+            "Well, at least not in this time limit.\n"
             "              "
                 "(Click to continue...)",
             MID_CENTER

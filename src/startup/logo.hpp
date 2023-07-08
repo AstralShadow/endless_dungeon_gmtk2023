@@ -14,13 +14,19 @@ namespace startup
     extern SDL_Rect gmtk_logo_pos;
     extern u32 time;
 
-    const u32 enter_start = 250;
-    const u32 enter_end = 1500;
+    const u32 text_enter_start = 250;
+    const u32 text_enter_end = 1500;
 
-    const u32 exit_start = 3000;
-    const u32 exit_end = 4250;
+    const u32 enter_start = 1500;
+    const u32 enter_end = 2750;
 
-    const u32 next_scene_t = 4500;
+    const u32 text_exit_start = 4750;
+    const u32 text_exit_end = 6000;
+
+    const u32 exit_start = 4250;
+    const u32 exit_end = 5500;
+
+    const u32 next_scene_t = 6500;
     const std::string next_scene = "game";
 }
 
