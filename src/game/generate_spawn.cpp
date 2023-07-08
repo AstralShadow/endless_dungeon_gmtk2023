@@ -1,5 +1,6 @@
 #include "game/level.hpp"
 #include "game/init.hpp"
+#include "game/hero.hpp"
 #include <iostream>
 
 using std::cout;
@@ -19,5 +20,7 @@ void game::generate_spawn()
             level.at(x, y) = ground_tile();
         }
     }
+
+    hero();
 }
 

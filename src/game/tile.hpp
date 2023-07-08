@@ -24,6 +24,16 @@ namespace game
         Type type = T_WALL;
 
 
+        enum Content : u8
+        {
+            C_NONE,
+            C_HERO,
+            
+            C_LAST
+        };
+
+        Content content = C_NONE;
+
     };
 
     const Point tile_size {32, 32};
@@ -48,7 +58,8 @@ namespace game
 
     inline bool operator == (Tile a, Tile b)
     {
-        return a.type == b.type;
+        return a.type == b.type
+            && a.content == b.content;
     }
 }
 

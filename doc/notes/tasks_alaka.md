@@ -81,3 +81,6 @@
         - Fastest speed
     - Don't use numbers. We don't know how much are these speeds.
 
+
+## You can make only 2 or 3 frames and it still counts as animation!!!
+
