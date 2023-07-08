@@ -87,9 +87,4 @@ The hero can act in one of these manners:
     Increases stats
 
 
-# Questions
-
-Should the hero leave using a door, a staircase,
-or instead of leaving have shops to restore resources?
-
 
