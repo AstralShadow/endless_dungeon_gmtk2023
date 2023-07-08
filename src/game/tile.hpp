@@ -56,11 +56,32 @@ namespace game
         return tile;
     }
 
+
     inline bool operator == (Tile a, Tile b)
     {
         return a.type == b.type
             && a.content == b.content;
     }
+
+
+    inline bool can_hero_walk_on(Tile a)
+    {
+        switch(a.type) {
+            case Tile::T_GROUND:
+            case Tile::T_PATH:
+                break;
+            default:
+                return false;
+        }
+
+        switch(a.content) {
+            default:
+                return false;
+        }
+
+        return true;
+    }
+
 }
 
 #endif // INCLUDE_TILE_HPP

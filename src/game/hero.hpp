@@ -13,6 +13,8 @@ namespace game
 
         Point pos; // in tiles
         FPoint animation_pos {0, 0};
+
+        void move_to(Point pos); // in tiles
     };
 
     Hero& hero();

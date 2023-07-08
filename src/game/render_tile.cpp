@@ -54,7 +54,7 @@ void game::render_tile(int x, int y)
         64, 64
     };
 
-    SDL_Rect dest {
+    SDL_FRect dest {
         x * 32,
         y * 32,
         32, 32
@@ -62,7 +62,7 @@ void game::render_tile(int x, int y)
 
     camera().apply(dest);
 
-    SDL_RenderCopy(rnd, tex, &src, &dest);
+    SDL_RenderCopyF(rnd, tex, &src, &dest);
 }
 
 

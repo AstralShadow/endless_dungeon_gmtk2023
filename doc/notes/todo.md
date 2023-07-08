@@ -81,6 +81,10 @@ Added camera scroll-to-zoom functionality.
 I wanted it better (with respect to cursor position)
  but i don't want to waste time on this.
 
+> 10:48
+Took a nap from nearly 5am to now.
+Rendering hero.
+
 
 # Utility
 - [x] Graphic loading
@@ -126,7 +130,13 @@ I wanted it better (with respect to cursor position)
     - [ ] Money/Loot
     - [ ] Resources
 
-- [ ] Hero
+- [x] Hero
+    - [x] Rendering
+        - [ ] Rendering textures
+    - [ ] Movement
+        - [ ] Animation
+    - [ ] Actions
+        - [ ] Animation?
     - [ ] Stats
     - [ ] Behavior
 

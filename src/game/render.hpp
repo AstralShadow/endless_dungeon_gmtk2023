@@ -19,6 +19,8 @@ namespace game
 
     void render_tile(int x, int y);
     void render_tile_border(int x, int y);
+
+    void render_hero();
 }
 
 #endif // INCLUDE_GAME_RENDER_HPP

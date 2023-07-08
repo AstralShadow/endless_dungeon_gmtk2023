@@ -74,6 +74,15 @@ void Camera::apply(SDL_Rect& r)
     r.h *= zoom;
 }
 
+void Camera::apply(SDL_FRect& r)
+{
+    auto _pos = fpos();
+    r.x = (r.x - _pos.x) * zoom;
+    r.y = (r.y - _pos.y) * zoom;
+    r.w *= zoom;
+    r.h *= zoom;
+}
+
 
 void Camera::undo(int& x, int& y)
 {
