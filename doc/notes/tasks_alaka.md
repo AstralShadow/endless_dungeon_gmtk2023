@@ -2,7 +2,7 @@
 
 - [x] This is a completed task example.
 
-- [ ] Read all tasks and pick most important first.
+- [x] Read all tasks and pick most important first.
 
 - [ ] Add "Created for" to logo in `assets/jamlogo2023.png`
     - Try not to make the image bigger than `1500x1100`
