@@ -9,8 +9,11 @@ void core::register_scenes()
     core::scene<game::scene_uid>("game");
     core::scene<startup::scene_uid>("startup");
 
+#ifndef SKIP_INTRO
     core::set_scene("startup");
-    //core::set_scene("game");
+#else // SKIP_INTRO
+    core::set_scene("game");
+#endif // SKIP_INTRO
 }
 
 
