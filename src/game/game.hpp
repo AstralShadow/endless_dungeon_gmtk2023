@@ -4,6 +4,7 @@
 #include "utils/types.hpp"
 
 struct SDL_KeyboardEvent;
+struct SDL_MouseMotionEvent;
 
 namespace game
 {
@@ -16,6 +17,8 @@ namespace game
     void render(scene_uid = 0);
     
     void keydown(SDL_KeyboardEvent&, scene_uid = 0);
+    void mouse_motion(SDL_MouseMotionEvent&,
+                      scene_uid = 0);
 }
 
 #endif // INCLUDE_GAME_GAME_HPP

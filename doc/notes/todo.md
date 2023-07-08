@@ -64,11 +64,17 @@ At least my textures are below prototype level :D
 > 02:38
 Rendering works.. I suppose.
 Going to add camera controls on
- - [ ] `WASD`
- - [ ] arrows
- - [ ] mid-mouse drag
- - [ ] screen border
+ - [x] `WASD`
+ - [x] arrows
+ - [x] mid-mouse drag
+ - [x] screen border (disabled)
 
+> 03:40
+Trying to fix bad scaling when zooming in.
+Adding Camera::undo
+
+> 03:48
+Added last camera movement and disabled flag for it
 
 
 # Utility
