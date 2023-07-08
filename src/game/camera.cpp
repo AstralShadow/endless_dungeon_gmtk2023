@@ -20,8 +20,8 @@ Point Camera::pos()
     size.y /= zoom;
 
     return {
-        mid.x - size.x / 2,
-        mid.y - size.y / 2
+        static_cast<int>(mid.x - size.x / 2),
+        static_cast<int>(mid.y - size.y / 2)
     };
 }
 
@@ -58,26 +58,40 @@ FPoint Camera::fsize()
 void Camera::apply(int& x, int& y)
 {
     auto _pos = pos();
-    x -= _pos.x;
-    y -= _pos.y;
+    x = (x - _pos.x) * zoom;
+    y = (y - _pos.y) * zoom;
 }
 
 void Camera::apply(Point& p)
 {
-    auto _pos = pos();
-    p.x -= _pos.x;
-    p.y -= _pos.y;
+    apply(p.x, p.y);
 }
 
 void Camera::apply(SDL_Rect& r)
 {
-    auto _pos = fpos();
-    r.x -= _pos.x;
-    r.y -= _pos.y;
-
-    r.x *= zoom;
-    r.y *= zoom;
+    apply(r.x, r.y);
     r.w *= zoom;
     r.h *= zoom;
+}
+
+
+void Camera::undo(int& x, int& y)
+{
+    auto _pos = pos();
+    x = x / zoom + _pos.x;
+    y = y / zoom + _pos.y;
+}
+
+void Camera::undo(Point& p)
+{
+    undo(p.x, p.y);
+}
+
+void Camera::undo(SDL_Rect& r)
+{
+    undo(r.x, r.y);
+
+    r.w /= zoom;
+    r.h /= zoom;
 }
 

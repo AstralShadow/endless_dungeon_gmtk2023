@@ -19,6 +19,10 @@ namespace game
         void apply(int& x, int& y);
         void apply(Point&);
         void apply(SDL_Rect&);
+
+        void undo(int& x, int& y);
+        void undo(Point&);
+        void undo(SDL_Rect&);
     };
 
     Camera& camera();
