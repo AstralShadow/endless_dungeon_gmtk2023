@@ -36,6 +36,14 @@ namespace game
 
             operator Tile ();
             TileWrapper& operator = (Tile);
+
+            /**
+             * Does not update dijkstra maps.
+             * Used in dijkstra map calculation
+             *
+             * Returns if maps should be updated
+             */
+            bool set(Tile);
         };
 
         TileWrapper at(int x, int y);
@@ -53,7 +61,9 @@ namespace game
         unordered_map<ChunkPos, Chunk> _data;
 
 
-        ChunkPos hash_chunk_pos(int x, int y);
+        static ChunkPos hash_chunk_pos(int x, int y);
+        static Point unhash_chunk_pos(ChunkPos);
+
         /** These functions take chunk coords (16bit) */
         /* Can return nullptr */
         Chunk* find_chunk(int x, int y);
@@ -61,6 +71,8 @@ namespace game
         Chunk* get_chunk(int x, int y);
         /* Removes chunk if existing */
         void remove_chunk(int x, int y);
+
+        friend void update_dijkstra_maps();
     };
 
     Level& level();

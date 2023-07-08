@@ -19,6 +19,14 @@ constexpr bool operator != (Point const& a,
 }
 
 
+constexpr bool operator < (Point a, Point b)
+{
+    if(a.y != b.y)
+        return a.y < b.y;
+    return a.x < b.x;
+}
+
+
 constexpr Point operator + (Point a, Point const& b)
 {
     a.x += b.x;

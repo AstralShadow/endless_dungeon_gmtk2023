@@ -9,15 +9,17 @@ namespace game
 {
     struct Hero
     {
-        Hero(Point _pos);
+        Hero();
 
-        Point pos; // in tiles
+        Point pos{0, 0}; // in tiles
         FPoint animation_pos {0, 0};
 
-        void move_to(Point pos); // in tiles
+        void move_to(Point pos); // tiles; no animation
     };
 
     Hero& hero();
+
+    const float hero_speed = 1.0f; // tiles/s
 }
 
 #endif // INCLUDE_GAME_HERO_HPP

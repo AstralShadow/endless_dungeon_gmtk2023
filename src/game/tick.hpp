@@ -6,6 +6,9 @@
 namespace game
 {
     void tick_move_camera(u32);
+
+    void tick_hero(u32);
+    void tick_hero_movement(u32);
 }
 
 #endif // INCLUDE_GAME_TICK_HPP

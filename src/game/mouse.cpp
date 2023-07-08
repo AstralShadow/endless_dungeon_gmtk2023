@@ -76,16 +76,14 @@ void game::
 mouse_wheel(SDL_MouseWheelEvent& ev, scene_uid)
 {
     auto& camera = game::camera();
-    auto screen = screen_size();
 
     Point m_pos;
     SDL_GetMouseState(&m_pos.x, &m_pos.y);
 
-    auto old_zoom = camera.zoom;
     camera.zoom += ev.y * 0.15f;
 
-    if(camera.zoom < 0.5)
-        camera.zoom = 0.5;
+    if(camera.zoom < 0.3)
+        camera.zoom = 0.3;
 
     if(camera.zoom > 2.5)
         camera.zoom = 2.5;

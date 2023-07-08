@@ -34,6 +34,9 @@ namespace game
 
         Content content = C_NONE;
 
+
+        /* Dijkstra maps */
+        u32 interest = 0xffffffff; // 0 = explored
     };
 
     const Point tile_size {32, 32};
@@ -59,8 +62,15 @@ namespace game
 
     inline bool operator == (Tile a, Tile b)
     {
-        return a.type == b.type
-            && a.content == b.content;
+        if(a.type != b.type || a.content != b.content)
+            return false;
+
+        return true;
+    }
+
+    inline bool operator != (Tile a, Tile b)
+    {
+        return !(a == b);
     }
 
 

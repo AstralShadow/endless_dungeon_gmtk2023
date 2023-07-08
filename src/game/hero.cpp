@@ -6,23 +6,21 @@ using game::Hero;
 
 Hero& game::hero()
 {
-    static Hero _hero({0, 0});
+    static Hero _hero;
     return _hero;
 }
 
 
-Hero::Hero(Point _pos) :
-    pos(_pos)
+Hero::Hero()
 {
-    Tile tile = level().at(_pos.x, _pos.y);
-    tile.content = Tile::C_HERO;
-    level().at(_pos.x, _pos.y) = tile;
+
 }
 
 void Hero::move_to(Point _pos)
 {
     if(!can_hero_walk_on(level().at(_pos.x, _pos.y)))
         return;
+
     { /** Move away from current tile */
         Tile tile = level().at(pos.x, pos.y);
         tile.content = Tile::C_NONE;

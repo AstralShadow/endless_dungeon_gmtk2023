@@ -55,8 +55,8 @@ void game::render_tile(int x, int y)
     };
 
     SDL_FRect dest {
-        x * 32,
-        y * 32,
+        static_cast<float>(x * 32),
+        static_cast<float>(y * 32),
         32, 32
     };
 

@@ -85,6 +85,10 @@ I wanted it better (with respect to cursor position)
 Took a nap from nearly 5am to now.
 Rendering hero.
 
+> 12:52
+Currently working on Dijkstra maps inspired by:
+<https://chizaruu.github.io/roguebasin/the_incredible_power_of_dijkstra_maps>
+
 
 # Utility
 - [x] Graphic loading

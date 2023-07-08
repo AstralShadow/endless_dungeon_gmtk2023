@@ -22,6 +22,14 @@ Level::ChunkPos Level::hash_chunk_pos(int x, int y)
     return pos;
 }
 
+Point Level::unhash_chunk_pos(ChunkPos pos)
+{
+    int x = (pos & 0xffff) << 4;
+    int y = (pos & 0xffff0000) >> (16 - 4);
+
+    return {x, y};
+}
+
 
 Level::Chunk* Level::find_chunk(int x, int y)
 {
