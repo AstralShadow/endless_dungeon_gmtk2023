@@ -22,6 +22,9 @@ namespace game
         float max_health = 100;
         float stamina = 100;
         float max_stamina = 100;
+        float xp = 0;
+        float max_xp = 100;
+
         float hunger = 100; // [0, 100]
 
         float speed = 64; // world px/s

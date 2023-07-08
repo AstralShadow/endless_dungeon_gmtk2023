@@ -3,6 +3,8 @@
 
 namespace game
 {
+    void render_ui();
+
     /**
      * Renders level map up to N-th line.
      * This is useful for properly z-indexing stuff. 

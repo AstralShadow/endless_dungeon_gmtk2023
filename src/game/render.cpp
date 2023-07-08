@@ -68,5 +68,8 @@ void game::render(scene_uid)
 
     render_map_after((itr_last->first + 1) * tile_size.y);
 
+
+    render_ui();
+
     SDL_RenderPresent(rnd);
 }
