@@ -103,6 +103,9 @@ Got carried away coding and forgot to take notes here.
 Currently working on hint text-boxes that will be used
  for both tutorial and intro.
 
+> 23:52
+Added introduction & part of the tutorial as hints.
+Going to take some rest.
 
 # Utility
 - [x] Graphic loading
@@ -112,18 +115,14 @@ Currently working on hint text-boxes that will be used
 - [ ] Add SDL_mixer to the engine to add sound
 
 
-# Startup
+# Startup/Tutorial
 - [x] Add GMTK logo on startup
-- [ ] Add theme in startup
-- [ ] Prepare a dialogue in startup
-- [ ] Add tutorial image
-
-
-# Menu
-> Menu removed. We get on straight from introduction.
-- Plan menu
-    - Credits
-    - Settings?
+- [x] Add theme in startup
+- [x] Prepare a monologue in startup
+- [x] Add tutorial notes
+- [x] Check if the user can:
+    - [x] Move the screen when the hint appears
+    - [x] Place/Remove tiles when the hint appears
 
 
 # Gameplay
@@ -133,7 +132,7 @@ Currently working on hint text-boxes that will be used
     - [x] Zoom controls
     - [x] Test Camera::apply
 
-- [ ] Level
+- [x] Level
     - [x] Chunks
         - [ ] Move the world if position goes too high
             `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
@@ -165,10 +164,5 @@ Currently working on hint text-boxes that will be used
     - [ ] Stats/Types
     - [ ] Behavior
 
-
-
-- [ ] Check if the user can:
-    - Move the screen when the hint appears
-    - Place/Remove tiles when the hint appears
 
 
