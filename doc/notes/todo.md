@@ -120,9 +120,10 @@ Currently working on hint text-boxes that will be used
 
 
 # Menu
-- [ ] Plan menu
-    - [ ] Credits
-    - [ ] Settings?
+> Menu removed. We get on straight from introduction.
+- Plan menu
+    - Credits
+    - Settings?
 
 
 # Gameplay

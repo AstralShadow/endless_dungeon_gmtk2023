@@ -19,11 +19,9 @@ void startup::render(scene_uid)
 {
     SDL_RenderClear(rnd);
 
-    auto logo = gmtk_logo();
-    SDL_RenderCopy(rnd, logo, nullptr, &gmtk_logo_pos);
-
     /* "Created for" text */
-    if(time > text_enter_start && time < text_exit_end) {
+    if(time > text_enter_start)
+    if(time < text_exit_end) {
         auto font = get_font(game::FT_DEFAULT, 40);
         SDL_Color color {255, 255, 255, 255};
 
@@ -55,19 +53,83 @@ void startup::render(scene_uid)
                 auto tex = utils::create_texture(surf);
 
                 auto screen = screen_size();
-                SDL_Rect dest {
+                SDL_Rect dst {
                     (screen.x - surf->w) / 2,
                     100,
                     surf->w, surf->h
                 };
 
-                SDL_RenderCopy(rnd, tex, nullptr, &dest);
+                SDL_RenderCopy(rnd, tex, nullptr, &dst);
 
                 SDL_DestroyTexture(tex);
                 SDL_FreeSurface(surf);
             }
         }
     }
+
+    /* Credits */
+    {
+        float k = 0.0f;
+
+        if(time > creds_enter_start)
+        if(time < creds_enter_end) {
+            k = 1.0f * (time - creds_enter_start)
+                / (creds_enter_end - creds_enter_start);
+        }
+
+        if(time >= creds_enter_end)
+        if(time < creds_exit_start) {
+            k = 1.0f;
+        }
+
+        if(time > creds_exit_start)
+        if(time < creds_exit_end) {
+            k = 1 - 1.0f * (time - creds_exit_start)
+                / (creds_exit_end - creds_exit_start);
+        }
+
+        u8 gray = 255 * k;
+
+
+        SDL_Texture* texture = nullptr;
+        SDL_Point size {0, 0};
+
+
+        auto font = get_font(game::FT_DEFAULT);
+        SDL_Color color {gray, gray, gray, 255};
+
+        string text =
+            "Code: AzCraft\n"
+            "Art:  Jennifer Skot";
+
+        auto surf = TTF_RenderUTF8_Blended_Wrapped
+            (font, text.c_str(), color, 0);
+
+        if(!surf) {
+            cout << "Failed to render text" << endl;
+            cout << TTF_GetError() << endl;
+        } else {
+            texture = utils::create_texture(surf);
+            size = {surf->w, surf->h};
+            SDL_FreeSurface(surf);
+        }
+
+        if(texture) {
+            auto screen = screen_size();
+            SDL_Rect dst {
+                (screen.x - size.x) / 2,
+                screen.y - size.y - 8,
+                size.x, size.y
+            };
+            SDL_RenderCopy(rnd, texture, nullptr, &dst);
+            SDL_DestroyTexture(texture);
+        }
+    }
+
+
+    /* GMTK 2023 logo */
+    auto logo = gmtk_logo();
+    SDL_RenderCopy(rnd, logo, nullptr, &gmtk_logo_pos);
 
 
     SDL_RenderPresent(rnd);
