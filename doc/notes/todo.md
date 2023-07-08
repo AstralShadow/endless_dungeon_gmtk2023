@@ -61,6 +61,14 @@ I kind of realized i should've went for the prototype..
 > 02:02
 At least my textures are below prototype level :D
 
+> 02:38
+Rendering works.. I suppose.
+Going to add camera controls on
+ - [ ] `WASD`
+ - [ ] arrows
+ - [ ] mid-mouse drag
+ - [ ] screen border
+
 
 
 # Utility

@@ -8,7 +8,7 @@ namespace game
 {
     struct Camera
     {
-        Point mid {16, 16};
+        FPoint mid {16, 16};
         float zoom = 1.0f;
 
         Point pos();
@@ -22,6 +22,8 @@ namespace game
     };
 
     Camera& camera();
+
+    const float camera_speed = 400.0f; // px/s
 }
 
 #endif // INCLUDE_GAME_CAMERA_HPP
