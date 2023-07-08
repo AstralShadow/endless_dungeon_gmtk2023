@@ -101,7 +101,7 @@ I'll add Hero stats
 # Utility
 - [x] Graphic loading
     - [ ] Resource management
-- [ ] Text rendering
+- [x] Text rendering
     - [x] Fonts
 - [ ] Add SDL_mixer to the engine to add sound
 
@@ -110,6 +110,7 @@ I'll add Hero stats
 - [x] Add GMTK logo on startup
 - [ ] Add theme in startup
 - [ ] Prepare a dialogue in startup
+- [ ] Add tutorial image
 
 
 # Menu
@@ -134,8 +135,8 @@ I'll add Hero stats
     - [ ] Generation of areas
         - [x] Spawn area
     - [x] Editing
-        - [ ] User interface
-        - [ ] Time control
+        - [x] User interface
+        - [x] Time control
 
 
 - [ ] Treasures
@@ -150,7 +151,7 @@ I'll add Hero stats
         - [x] Animation
     - [ ] Actions
         - [ ] Animation?
-    - [ ] Stats
+    - [x] Stats
     - [ ] Behavior
 
 - [ ] Enemies

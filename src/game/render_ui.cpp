@@ -2,6 +2,7 @@
 #include "game/game.hpp"
 #include "core/core.hpp"
 #include "game/hero.hpp"
+#include "game/tick.hpp"
 #include "utils/textures.hpp"
 #include "utils/screen.hpp"
 #include <SDL2/SDL_render.h>
@@ -9,11 +10,18 @@
 
 using std::string;
 
-
 static auto& rnd = core::renderer;
+
+namespace game
+{
+    void render_ui_bars();
+    void render_ui_time_controls();
+}
+
 
 static const
 string time_controls_path = "assets/time_controls.png";
+
 
 enum BarIndex
 {
@@ -42,9 +50,7 @@ static SDL_Texture* textures[BAR_INDEX_LAST];
 static SDL_Point tex_size[BAR_INDEX_LAST];
 
 
-
-
-void game::render_ui()
+void game::render_ui_bars()
 {
     [[maybe_unused]]
     static u8 _loaded = [](){
@@ -56,8 +62,7 @@ void game::render_ui()
                 continue;
             }
             tex_size[i] = {surf->w, surf->h};
-            textures[i] = utils::create_texture
-                (surf);
+            textures[i] = utils::create_texture(surf);
             SDL_FreeSurface(surf);
         }
 
@@ -105,3 +110,50 @@ void game::render_ui()
     }
 }
 
+
+void game::render_ui_time_controls()
+{
+    static Point size {0, 0};
+    static SDL_Texture* texture = [](){
+        auto surf = utils::
+            load_surface(time_controls_path);
+        if(!surf) {
+            size = {0, 0};
+            return static_cast<SDL_Texture*>(nullptr);
+        }
+        size = {surf->w * 4 / 5, surf->h};
+        auto tex = utils::create_texture(surf);
+        SDL_FreeSurface(surf);
+
+        return tex;
+    }();
+
+    auto screen = screen_size();
+    SDL_Rect dest {
+        screen.x - 20,
+        screen.y - 20,
+        static_cast<int>(screen.x * 0.3),
+        static_cast<int>(screen.x * 0.3)
+            * size.y / size.x
+    };
+    dest.x -= dest.w;
+    dest.y -= dest.h;
+    SDL_Rect src { 0, 0, size.x, size.y };
+
+    SDL_RenderCopy(rnd, texture, &src, &dest);
+
+
+    src.x = src.w;
+    src.w /= 4;
+
+    dest.w /= 4;
+    dest.x += dest.w * speed_mode;
+
+    SDL_RenderCopy(rnd, texture, &src, &dest);
+}
+
+void game::render_ui()
+{
+    render_ui_bars();
+    render_ui_time_controls();
+}

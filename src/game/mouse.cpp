@@ -1,9 +1,17 @@
 #include "game/game.hpp"
+#include "game/mouse.hpp"
 #include "game/camera.hpp"
 #include "game/level.hpp"
 #include "utils/screen.hpp"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_mouse.h>
+
+static enum {
+    M_DRAGGING,
+    M_ADD_GROUND,
+    M_REMOVE_GROUND,
+    M_NONE
+} mode = M_NONE;
 
 
 void game::
@@ -12,19 +20,12 @@ mousedown(SDL_MouseButtonEvent& ev, scene_uid)
     auto& camera = game::camera();
     auto& level = game::level();
 
-    if(ev.button == SDL_BUTTON_RIGHT) {
-        // Remove ground
-        Point pos {ev.x, ev.y};
-        camera.undo(pos);
-        int x = pos.x >> 5;
-        int y = pos.y >> 5;
-        Tile current = level.at(x, y);
-        if(current == path_tile())
-            level.at(x, y) = default_tile();
-    }
-
     if(ev.button == SDL_BUTTON_LEFT) {
-        // Add ground
+        if(click_time_control(ev))
+            return;
+
+        mode = M_ADD_GROUND;
+
         Point pos {ev.x, ev.y};
         camera.undo(pos);
         int x = pos.x >> 5;
@@ -33,7 +34,30 @@ mousedown(SDL_MouseButtonEvent& ev, scene_uid)
         if(current == default_tile())
             level.at(x, y) = path_tile();
     }
+
+    if(ev.button == SDL_BUTTON_RIGHT) {
+        mode = M_REMOVE_GROUND;
+
+        Point pos {ev.x, ev.y};
+        camera.undo(pos);
+        int x = pos.x >> 5;
+        int y = pos.y >> 5;
+        Tile current = level.at(x, y);
+        if(current == path_tile())
+            level.at(x, y) = default_tile();
+    }
+
+    if(ev.button == SDL_BUTTON_MIDDLE) {
+        mode = M_DRAGGING;
+    }
 }
+
+void game::
+mouseup(SDL_MouseButtonEvent& ev, scene_uid)
+{
+    mode = M_NONE;
+}
+
 
 void game::
 mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
@@ -41,14 +65,14 @@ mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
     auto& camera = game::camera();
     auto& level = game::level();
 
-    if(ev.state & SDL_BUTTON_MMASK) {
+    if(mode == M_DRAGGING) {
         // Dragging camera
 
         camera.mid.x -= ev.xrel / camera.zoom;
         camera.mid.y -= ev.yrel / camera.zoom;
     }
 
-    if(ev.state & SDL_BUTTON_RMASK) {
+    if(mode == M_REMOVE_GROUND) {
         // Remove ground
         Point pos {ev.x, ev.y};
         camera.undo(pos);
@@ -59,7 +83,7 @@ mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
             level.at(x, y) = default_tile();
     }
 
-    if(ev.state & SDL_BUTTON_LMASK) {
+    if(mode == M_ADD_GROUND) {
         // Add ground
         Point pos {ev.x, ev.y};
         camera.undo(pos);

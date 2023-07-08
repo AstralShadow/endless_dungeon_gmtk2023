@@ -27,8 +27,8 @@ namespace game
 
         float hunger = 100; // [0, 100]
 
-        float speed = 64; // world px/s
-        float dash_speed = 96;
+        float speed = 128; // world px/s
+        float dash_speed = 192;
 
         float morale = 50;
         float min_morale = 0;

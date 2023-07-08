@@ -3,7 +3,7 @@
 #include "game/navigation.hpp"
 #include "utils/screen.hpp"
 
-int game::speed_mode = 2;
+int game::speed_mode = 1;
 
 void game::tick(u32 ms, scene_uid)
 {

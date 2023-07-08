@@ -73,14 +73,15 @@
     - File: `assets/time_controls.png`
     - GIMP: `doc/gimp/azcraft/time_controls.xcf`
     - The player can speed up/pause the game with these buttons
-    - Size is 64x64 for 4x1 buttons (256x64 image)
+    - Size is 64x64 for 5x1 buttons (256x64 image)
     - Buttons:
         - Pause
         - Normal speed
         - Faster speed
         - Fastest speed
+        - Selected (like border)
     - Don't use numbers. We don't know how much are these speeds.
+    - The 5th image is used to show what's selected.
+        It is drawn over the active icon.
 
-
-## You can make only 2 or 3 frames and it still counts as animation!!!
 

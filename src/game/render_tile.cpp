@@ -48,8 +48,8 @@ void game::render_tile(int x, int y)
             return;
     }
 
-    // Using some big prime numbers to hash
-    int hash = hash_extra + x * 7901 + y * 7919;
+    // Using some prime numbers to hash
+    int hash = hash_extra + x * 7 + y * 5;
 
     SDL_Rect src {
         64 * ((hash / 4) & 0x3),
