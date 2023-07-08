@@ -42,6 +42,8 @@ namespace game
         H_TIME_CONTROL,
         H_TIME_CONTROL_2,
 
+        H_INTRO_END,
+
         H_LAST
     };
 

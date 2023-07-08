@@ -17,7 +17,7 @@ void game::keydown(SDL_KeyboardEvent& ev, scene_uid)
 #ifndef __EMSCRIPTEN__
     if(scancode == SDL_SCANCODE_Q)
         core::stop();
-#endif
+#endif // __EMSCRIPTEN__
 
 
     const u8 camera_keys[] = {

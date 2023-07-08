@@ -62,6 +62,8 @@ namespace game {
         },
 
         { // H_LEVEL_EDITING
+            "Currently the level is mostly made"
+                " of walls.\n"
             "You can remove the walls with"
                 " [Left Mouse Button]\n"
             "You can add new walls with"
@@ -105,6 +107,12 @@ namespace game {
             BOTTOM_RIGHT
         },
 
+        { // H_INTRO_END
+            "I recommend you explore a bit and"
+            " aid the Hero.\n"
+            "He's pretty smart for a bot made by me.",
+            BOTTOM_LEFT
+        },
     };
 }
 
