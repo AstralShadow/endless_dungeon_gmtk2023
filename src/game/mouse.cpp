@@ -7,6 +7,35 @@
 
 
 void game::
+mousedown(SDL_MouseButtonEvent& ev, scene_uid)
+{
+    auto& camera = game::camera();
+    auto& level = game::level();
+
+    if(ev.button == SDL_BUTTON_RIGHT) {
+        // Remove ground
+        Point pos {ev.x, ev.y};
+        camera.undo(pos);
+        int x = pos.x >> 5;
+        int y = pos.y >> 5;
+        Tile current = level.at(x, y);
+        if(current == path_tile())
+            level.at(x, y) = default_tile();
+    }
+
+    if(ev.button == SDL_BUTTON_LEFT) {
+        // Add ground
+        Point pos {ev.x, ev.y};
+        camera.undo(pos);
+        int x = pos.x >> 5;
+        int y = pos.y >> 5;
+        Tile current = level.at(x, y);
+        if(current == default_tile())
+            level.at(x, y) = path_tile();
+    }
+}
+
+void game::
 mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
 {
     auto& camera = game::camera();
