@@ -11,7 +11,7 @@
         - contains timing variables
     - Original image in `doc/gmtk/jamlogo2023.png`
 
-- [ ] Draw Wall & Floor texture(s)
+- [x] Draw Wall & Floor texture(s)
     - Files: `assets/wall_solid.png` `assets/floor_grass.png`,
     - GIMP: `doc/gimp/azcraft/wall_solid.xcf`
     - They contain `4x4` tiles with `64x64` size (total size `256x256`)
