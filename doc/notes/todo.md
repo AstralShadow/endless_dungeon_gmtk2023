@@ -89,11 +89,16 @@ Rendering hero.
 Currently working on Dijkstra maps inspired by:
 <https://chizaruu.github.io/roguebasin/the_incredible_power_of_dijkstra_maps>
 
+> 13:37
+Working on map exploration (interest)
+
+
 
 # Utility
 - [x] Graphic loading
     - [ ] Resource management
 - [ ] Text rendering
+    - [x] Fonts
 - [ ] Add SDL_mixer to the engine to add sound
 
 
