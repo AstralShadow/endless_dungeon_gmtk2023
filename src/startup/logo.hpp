@@ -20,7 +20,7 @@ namespace startup
     const u32 exit_start = 3000;
     const u32 exit_end = 4250;
 
-    const u32 next_scene_t = 5000;
+    const u32 next_scene_t = 4500;
     const std::string next_scene = "game";
 }
 

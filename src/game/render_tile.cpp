@@ -1,12 +1,10 @@
 #include "game/render.hpp"
-#include "core/core.hpp"
 #include "game/camera.hpp"
 #include "game/level.hpp"
 #include "utils/screen.hpp"
 #include "utils/textures.hpp"
 #include "utils/trandom.hpp"
 #include "game/fonts.hpp"
-#include <SDL2/SDL_render.h>
 #include <iostream>
 #include <string>
 #include <map>
@@ -17,8 +15,6 @@ using utils::create_texture;
 
 using std::cout;
 using std::endl;
-
-static auto& rnd = core::renderer;
 
 static string wall_path = "assets/wall.png";
 static string floor_path = "assets/floor.png";

@@ -1,16 +1,13 @@
 #include "game/render.hpp"
 #include "game/game.hpp"
-#include "core/core.hpp"
 #include "game/hero.hpp"
 #include "game/tick.hpp"
+#include "game/hints.hpp"
 #include "utils/textures.hpp"
 #include "utils/screen.hpp"
-#include <SDL2/SDL_render.h>
 #include <string>
 
 using std::string;
-
-static auto& rnd = core::renderer;
 
 namespace game
 {
@@ -79,16 +76,16 @@ void game::render_ui_bars()
     int i_bg = BAR_INDEX_LAST;
 
     SDL_Rect bg_dest {
-        screen.x * 0.025,
-        screen.y * 0.015,
-        screen.x * 0.45,
-        screen.y * 0.05 + screen.x * 0.4
-            * tex_size[i_bg].y / tex_size[i_bg].x
+        static_cast<int>(screen.x * 0.025),
+        static_cast<int>(screen.y * 0.015),
+        static_cast<int>(screen.x * 0.45),
+        static_cast<int>
+            (screen.y * 0.05 + screen.x * 0.4
+                * tex_size[i_bg].y / tex_size[i_bg].x)
     };
 
     SDL_RenderCopy(rnd, textures[i_bg],
                    nullptr, &bg_dest);
-
 
 
 
@@ -99,8 +96,8 @@ void game::render_ui_bars()
     };
 
     SDL_Rect dest {
-        screen.x * 0.05,
-        screen.y * 0.05,
+        static_cast<int>(screen.x * 0.05),
+        static_cast<int>(screen.y * 0.05),
         0, 0
     };
     SDL_Rect src {
@@ -174,6 +171,8 @@ void game::render_ui_time_controls()
 
 void game::render_ui()
 {
-    render_ui_bars();
-    render_ui_time_controls();
+    if(get_hint(H_HERO_STATS).can_show_item())
+        render_ui_bars();
+    if(get_hint(H_TIME_CONTROL).can_show_item())
+        render_ui_time_controls();
 }

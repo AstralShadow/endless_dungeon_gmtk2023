@@ -2,6 +2,7 @@
 #include "game/mouse.hpp"
 #include "game/camera.hpp"
 #include "game/level.hpp"
+#include "game/hints.hpp"
 #include "utils/screen.hpp"
 #include <SDL2/SDL_events.h>
 #include <SDL2/SDL_mouse.h>
@@ -23,6 +24,10 @@ mousedown(SDL_MouseButtonEvent& ev, scene_uid)
     if(ev.button == SDL_BUTTON_LEFT) {
         if(click_time_control(ev))
             return;
+
+        if(progress_intro_hints())
+            return;
+
 
         mode = M_ADD_GROUND;
 
@@ -53,7 +58,7 @@ mousedown(SDL_MouseButtonEvent& ev, scene_uid)
 }
 
 void game::
-mouseup(SDL_MouseButtonEvent& ev, scene_uid)
+mouseup(SDL_MouseButtonEvent&, scene_uid)
 {
     mode = M_NONE;
 }

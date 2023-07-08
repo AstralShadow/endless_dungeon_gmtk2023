@@ -1,6 +1,9 @@
 #ifndef INCLUDE_GAME_RENDER_HPP
 #define INCLUDE_GAME_RENDER_HPP
 
+#include "core/core.hpp"
+#include <SDL2/SDL_render.h>
+
 namespace game
 {
     void render_ui();
@@ -23,6 +26,11 @@ namespace game
     void render_tile_border(int x, int y);
 
     void render_hero();
+
+    void render_hints();
 }
+
+
+static auto& rnd = core::renderer;
 
 #endif // INCLUDE_GAME_RENDER_HPP

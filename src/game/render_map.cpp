@@ -1,15 +1,11 @@
 #include "game/render.hpp"
-#include "core/core.hpp"
 #include "game/camera.hpp"
 #include "game/tile.hpp"
 #include "utils/screen.hpp"
-#include <SDL2/SDL_render.h>
 #include <iostream>
 
 using std::cout;
 using std::endl;
-
-static auto& rnd = core::renderer;
 
 
 void game::render_map_before(int y)

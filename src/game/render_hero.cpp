@@ -1,15 +1,11 @@
 #include "game/render.hpp"
-#include "core/core.hpp"
 #include "game/hero.hpp"
 #include "game/tile.hpp"
 #include "game/camera.hpp"
-#include <SDL2/SDL_render.h>
 #include <iostream>
 
 using std::cout;
 using std::endl;
-
-static auto& rnd = core::renderer;
 
 
 void game::render_hero()

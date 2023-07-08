@@ -98,6 +98,12 @@ Now they work.
 I'll add Hero stats
 
 
+> 20:24
+Got carried away coding and forgot to take notes here.
+Currently working on hint text-boxes that will be used
+ for both tutorial and intro.
+
+
 # Utility
 - [x] Graphic loading
     - [ ] Resource management
@@ -157,5 +163,11 @@ I'll add Hero stats
 - [ ] Enemies
     - [ ] Stats/Types
     - [ ] Behavior
+
+
+
+- [ ] Check if the user can:
+    - Move the screen when the hint appears
+    - Place/Remove tiles when the hint appears
 
 
