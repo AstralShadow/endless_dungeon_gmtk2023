@@ -7,6 +7,7 @@
 namespace game
 {
     void render_ui();
+    void render_hints();
 
     /**
      * Renders level map up to N-th line.
@@ -25,9 +26,11 @@ namespace game
     void render_tile(int x, int y);
     void render_tile_border(int x, int y);
 
+
     void render_hero();
 
-    void render_hints();
+    struct Enemy;
+    void render_enemy(Enemy const*);
 }
 
 

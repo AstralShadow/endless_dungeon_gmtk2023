@@ -3,6 +3,7 @@
 #include "game/navigation.hpp"
 #include "game/level.hpp"
 #include "game/hints.hpp"
+#include "game/enemy.hpp"
 #include <queue>
 #include <iostream>
 
@@ -69,6 +70,22 @@ void game::tick_area_generator(u32 ms)
             level.at(point) = ground_tile();
         }
         return;
+    }
+
+    struct RNG_Token;
+
+    float enemies = randomf<RNG_Token>()
+        * area.size() / 16;
+
+    int _enemies = static_cast<int>(enemies);
+    while(_enemies > 0) {
+        for(Point pos : area) {
+            if(randomf<RNG_Token>() < 0.05) {
+                spawn_enemy(pos);
+                _enemies--;
+                break;
+            }
+        }
     }
 
     spawning_process = false;

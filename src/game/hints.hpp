@@ -45,6 +45,7 @@ namespace game
         H_INTRO_END,
 
         H_AREA_SPAWN,
+        H_MOVING_RAT,
 
         H_LAST
     };

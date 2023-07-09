@@ -14,6 +14,7 @@ namespace game
 
     /** Updates tile and map at that point. */
     void update_dijkstra_maps(Point tile);
+    void update_dijkstra_maps(std::set<Point> tiles);
 
     /** Updates one tile; Returns if map needs update */
     bool update_tile_value(Point tile);

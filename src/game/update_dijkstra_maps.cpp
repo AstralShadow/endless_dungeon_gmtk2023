@@ -47,3 +47,12 @@ void game::update_dijkstra_maps(Point tile)
 }
 
 
+void game::update_dijkstra_maps(std::set<Point> tiles)
+{
+    for(auto tile : tiles)
+        update_tile_value(tile);
+
+    for(auto tile : tiles)
+        balance_dijkstra_tile(tile);
+}
+

@@ -19,6 +19,22 @@ bool game::update_tile_value(Point pos)
 
     bool modified = false;
 
+    if(pos == hero().pos) {
+        if(tile.hero != 0) { 
+            tile.hero = 0;
+            modified = true;
+        }
+        if(tile.hero_path > tile.hero) {
+            tile.hero_path = tile.hero;
+            modified = true;
+        }
+    } else {
+        if(tile.hero != dijkstra_max) {
+            tile.hero = dijkstra_max;
+            modified = true;
+        }
+    }
+
     if(is_visible(pos, hero().pos)) {
         if(tile.interest > 0) {
             tile.interest = 0;
@@ -27,7 +43,7 @@ bool game::update_tile_value(Point pos)
         }
     }
 
-    if(tile.interest < 0xffff) {
+    if(tile.interest < dijkstra_max) {
         if(tile.interest > tile.interest_path) {
             tile.interest_path = tile.interest;
             modified = true;
@@ -50,9 +66,16 @@ bool game::tick_tile_value(Point pos)
 
     bool modified = false;
 
-    if(tile.interest < 0xffff) {
+    if(tile.interest < dijkstra_max) {
         if(tile.interest != tile.interest_path) {
             tile.interest_path = tile.interest;
+            modified = true;
+        }
+    }
+
+    if(tile.hero_path < dijkstra_max) {
+        if(tile.hero_path != tile.hero) {
+            tile.hero_path = tile.hero;
             modified = true;
         }
     }
@@ -92,5 +115,5 @@ void game::tick_tile_values(u32 ms)
         cout << updated.size() << " tiles" << endl;
     }
 
-    balance_dijkstra_tiles(updated);
+    update_dijkstra_maps(updated);
 }

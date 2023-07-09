@@ -1,6 +1,7 @@
 #include "game/render.hpp"
 #include "game/game.hpp"
 #include "game/hero.hpp"
+#include "game/enemy.hpp"
 #include "game/tile.hpp"
 #include "game/hints.hpp"
 #include <map>
@@ -15,9 +16,12 @@ struct IndexEntry
     enum {
         O_NULL,
         O_HERO,
+        O_ENEMY,
 
         O_LAST
     } type = O_NULL;
+
+    void const* object = nullptr;
 };
 
 typedef int y_t;
@@ -42,6 +46,16 @@ void game::render(scene_uid)
                 IndexEntry::O_HERO
             });
 
+        for(auto& enemy : enemies()) {
+            int enemy_y = enemy.pos.y
+                + ((enemy.animation_pos.y > 0) ? 1 : 0);
+            depth_order[enemy_y]
+                .push_back({
+                    enemy_y,
+                    IndexEntry::O_ENEMY,
+                    &enemy
+                });
+        }
 
         auto itr = depth_order.begin();
         auto itr_last = itr;
@@ -53,6 +67,12 @@ void game::render(scene_uid)
                 switch(entry.type) {
                     case IndexEntry::O_HERO:
                         render_hero();
+                        break;
+
+                    case IndexEntry::O_ENEMY:
+                        render_enemy
+                            (static_cast<Enemy const*>
+                                (entry.object));
                         break;
 
                     default:

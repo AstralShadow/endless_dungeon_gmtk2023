@@ -95,7 +95,7 @@ void game::render_tile(int x, int y)
 
     /* Displaying Dijkstra values */
 
-    int value = tile.interest_path;
+    int value = tile.hero_path;
 
     if(value > 0xff)
         return;

@@ -28,17 +28,25 @@ namespace game
         {
             C_NONE,
             C_HERO,
+            C_ENEMY,
+            C_TREASURE,
             
             C_LAST
         };
 
         Content content = C_NONE;
 
-
         /* Dijkstra maps */
         int interest = 0xffffff; // 0 = explored
         int interest_path = 0; // 0 = not interested
+
+        // Follow the hero
+        int hero = 0xffffff;
+        int hero_path = 0xffffff; // max = not interested
     };
+
+    const int dijkstra_max = 0xffffff;
+
 
     const Point tile_size {32, 32};
 
@@ -87,6 +95,28 @@ namespace game
 
         switch(a.content) {
             case Tile::C_NONE:
+            case Tile::C_HERO:
+                break;
+            default:
+                return false;
+        }
+
+        return true;
+    }
+
+    inline bool can_enemy_walk_on(Tile a)
+    {
+        switch(a.type) {
+            case Tile::T_GROUND:
+            case Tile::T_PATH:
+                break;
+            default:
+                return false;
+        }
+
+        switch(a.content) {
+            case Tile::C_NONE:
+            //case Tile::C_ENEMY:
                 break;
             default:
                 return false;

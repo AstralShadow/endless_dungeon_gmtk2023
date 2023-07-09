@@ -121,6 +121,11 @@ namespace game {
             "You should zoom out and look around.",
             BOTTOM_LEFT
         },
+
+        { // H_MOVING_RAT
+            "These pests started moving faster.",
+            BOTTOM_RIGHT
+        }
     };
 }
 

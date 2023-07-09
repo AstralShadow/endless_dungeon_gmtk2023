@@ -66,11 +66,21 @@ balance_dijkstra_tiles(std::set<Point> tiles)
                 next.push(pos); // needs: interest_path
             }
 
-            if(other.interest_path - 1
-                 > tile.interest_path)
+            if(can_hero_walk_on(tile)) {
+                if(other.interest_path - 1
+                     > tile.interest_path)
+                {
+                    tile.interest_path
+                        = other.interest_path - 1;
+                    modified = true;
+                }
+            }
+
+            if(other.hero_path + 1
+                < tile.hero_path)
             {
-                tile.interest_path
-                    = other.interest_path - 1;
+                tile.hero_path
+                    = other.hero_path + 1;
                 modified = true;
             }
         }
