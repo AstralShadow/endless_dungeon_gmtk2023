@@ -24,6 +24,8 @@ namespace game
 
     extern bool spawning_process;
     void tick_area_generator(u32);
+
+    Point get_spawning_area_pos();
 }
 
 #endif // INCLUDE_GAME_LEVEL_GENERATOR_HPP

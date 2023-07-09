@@ -28,7 +28,7 @@ bool game::progress_intro_hints()
             }
 
             hint.done = true;
-            if(next_hint < last_intro_hint)
+            if(next_hint <= last_intro_hint)
                 activate_hint
                     (static_cast<HintKey>
                         (next_hint++));

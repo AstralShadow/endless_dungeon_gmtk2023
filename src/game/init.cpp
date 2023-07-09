@@ -21,7 +21,7 @@ void game::init(int, char**, scene_uid)
     update_dijkstra_maps();
 
 #ifdef SKIP_INTRO
-    for(auto i = next_hint; i < last_intro_hint; i++) {
+    for(auto i = next_hint; i <= last_intro_hint; i++) {
         auto& hint = get_hint(static_cast<HintKey>(i));
         hint.active = true;
         hint.done = true;

@@ -113,6 +113,14 @@ namespace game {
             "He's pretty smart for a bot made by me.",
             BOTTOM_LEFT
         },
+
+
+        { // H_AREA_SPAWN
+            "Did you feel that?\n"
+            "I think there was an earthquake.\n"
+            "You should zoom out and look around.",
+            BOTTOM_LEFT
+        },
     };
 }
 

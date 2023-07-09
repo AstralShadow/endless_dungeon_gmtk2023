@@ -5,9 +5,11 @@
 #include "utils/textures.hpp"
 #include "utils/trandom.hpp"
 #include "game/fonts.hpp"
+#include "game/level_generator.hpp"
 #include <iostream>
 #include <string>
 #include <map>
+#include <SDL2/SDL_timer.h>
 
 using std::string;
 using utils::load_texture;
@@ -46,6 +48,7 @@ void game::render_tile(int x, int y)
 
     // Using some prime numbers to hash
     int hash = hash_extra + x * 7 + y * 5;
+    int hash2 = hash ^ SDL_GetTicks();
 
     SDL_Rect src {
         64 * ((hash / 4) & 0x3),
@@ -58,6 +61,30 @@ void game::render_tile(int x, int y)
         static_cast<float>(y * 32),
         32, 32
     };
+
+    if(spawning_process) {
+        auto other = get_spawning_area_pos();
+        Point delta = {
+            other.x - x,
+            other.y - y
+        };
+
+        int dist = sqrt(delta.x * delta.x
+                       + delta.y * delta.y);
+
+        if((dist + (SDL_GetTicks() / 80)) % 16 == 0)
+        if(dist < 250 && (hash2 & 0x18) == 0x18) {
+            float shake = (250 - dist) / 250.0f;
+            if(hash2 & 4)
+                shake *= 2;
+            int shake_x = (hash2 & 1) ? shake
+                                      : -shake;
+            int shake_y = (hash2 & 2) ? shake
+                                      : -shake;
+            dest.x += shake_x;
+            dest.y += shake_y;
+        }
+    }
 
     camera().apply(dest);
 

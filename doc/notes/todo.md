@@ -111,6 +111,10 @@ Going to take some rest.
 Starting with area generation.
 I should prepare and submit the itch page in 4 hours.
 
+> 11:35
+Added area generator.
+
+
 
 # Utility
 - [x] Graphic loading

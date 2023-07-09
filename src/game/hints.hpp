@@ -44,6 +44,8 @@ namespace game
 
         H_INTRO_END,
 
+        H_AREA_SPAWN,
+
         H_LAST
     };
 
@@ -73,7 +75,7 @@ namespace game
     bool progress_intro_hints();
 
     extern int next_hint;
-    const int last_intro_hint = H_LAST;
+    const int last_intro_hint = H_INTRO_END;
 
 
     const int frame_dropdown_speed = 120; // px/s
