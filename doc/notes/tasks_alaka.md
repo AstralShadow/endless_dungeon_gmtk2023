@@ -69,7 +69,7 @@
     - Size not fixed, but don't make them too big. They should stay on screen.
     - Try to make all bars with the same size.
 
-- [ ] Time controls
+- [x] Time controls
     - File: `assets/time_controls.png`
     - GIMP: `doc/gimp/azcraft/time_controls.xcf`
     - The player can speed up/pause the game with these buttons
