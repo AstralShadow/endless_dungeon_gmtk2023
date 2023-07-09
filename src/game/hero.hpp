@@ -20,7 +20,7 @@ namespace game
         float xp = 0;
         float max_xp = 100;
 
-        int attack = 5;
+        int attack = 35;
 
 
         float speed = 128; // world px/s

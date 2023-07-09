@@ -1,5 +1,6 @@
 #include "game/hints.hpp"
 #include "game/tick.hpp"
+#include "core/core.hpp"
 
 
 bool game::progress_intro_hints()
@@ -25,6 +26,10 @@ bool game::progress_intro_hints()
 
             if(active[0] == H_TIME_CONTROL_2) {
                 speed_mode = 1;
+            }
+
+            if(active[0] == H_GAME_OVER_END) {
+                core::stop();
             }
 
             hint.done = true;

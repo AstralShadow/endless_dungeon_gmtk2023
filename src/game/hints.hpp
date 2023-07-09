@@ -47,6 +47,12 @@ namespace game
         H_AREA_SPAWN,
         H_MOVING_ENEMY,
 
+        H_GAME_OVER_1,
+        H_GAME_OVER_2,
+        H_GAME_OVER_3,
+        H_GAME_OVER_LOOP,
+        H_GAME_OVER_END,
+
         H_LAST
     };
 

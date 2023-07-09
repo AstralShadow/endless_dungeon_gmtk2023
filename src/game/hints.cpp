@@ -125,6 +125,35 @@ namespace game {
         { // H_MOVING_ENEMY
             "These pests started moving faster.",
             BOTTOM_RIGHT
+        },
+
+
+        { // H_GAME_OVER_1
+            "OH NOOO!!!   The hero died. :(\n\n"
+            "You still have to design the level.\n"
+            "I'll revive him just this time.",
+            MID_CENTER
+        },
+        { // H_GAME_OVER_2
+            "Why did you let him die again?\n"
+            "Please, don't repeat this.",
+            MID_CENTER
+        },
+        { // H_GAME_OVER_3
+            "Ok, ok, he got a lot of lives.\n"
+            "Happy now? Please, stop killing him.",
+            MID_CENTER
+        },
+        { // H_GAME_OVER_LOOP
+            ". . .",
+            MID_CENTER
+        },
+        { //H_GAME_OVER_END
+            "That's it. I can't stand watching this.\n"
+            "                                       \n"
+            "            You're FIRED!              \n"
+            "                                       ",
+            MID_CENTER
         }
     };
 }
