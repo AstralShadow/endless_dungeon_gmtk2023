@@ -28,6 +28,17 @@ void game::tick_enemies(u32 ms)
     }
 
 
-    for(Enemy& enemy : enemies)
+    for(Enemy& enemy : enemies) {
         tick_enemy_movement(ms, enemy);
+
+        auto anim_p = enemy.animation_pos;
+
+        bool is_idle = anim_p.x == 0 && anim_p.y == 0;
+        if(!is_idle) {
+            float f_time = frames_per_second * ms / 1000;
+            enemy.frame += f_time;
+            while(enemy.frame >= 4)
+                enemy.frame -= 4;
+        }
+    }
 }

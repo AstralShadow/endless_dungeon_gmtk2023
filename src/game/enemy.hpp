@@ -11,7 +11,7 @@ namespace game
 {
     enum EnemyType
     {
-        ET_RAT,
+        ET_GOBLIN,
         ET_GHOST,
 
         ET_LAST
@@ -27,10 +27,12 @@ namespace game
 
         float _speed;
 
-
         int health() { return _health; }
         int attack() { return _attack; }
         float speed() { return _speed; }
+
+
+        float frame = 0;
     };
 
 

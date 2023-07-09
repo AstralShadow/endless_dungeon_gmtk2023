@@ -157,7 +157,8 @@ void game::render_ui_time_controls()
     dest.y -= dest.h;
     SDL_Rect src { 0, 0, size.x, size.y };
 
-    SDL_RenderCopy(rnd, texture, &src, &dest);
+    auto dest_copy = dest;
+    auto src_copy = src;
 
 
     src.x = src.w;
@@ -167,6 +168,11 @@ void game::render_ui_time_controls()
     dest.x += dest.w * speed_mode;
 
     SDL_RenderCopy(rnd, texture, &src, &dest);
+
+
+    SDL_RenderCopy(rnd, texture, &src_copy,
+                                 &dest_copy);
+
 }
 
 void game::render_ui()

@@ -122,7 +122,7 @@ namespace game {
             BOTTOM_LEFT
         },
 
-        { // H_MOVING_RAT
+        { // H_MOVING_ENEMY
             "These pests started moving faster.",
             BOTTOM_RIGHT
         }

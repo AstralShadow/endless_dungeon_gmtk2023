@@ -17,7 +17,7 @@ namespace game
         float attack;
         float speed;
     } static _base[ET_LAST] {
-        { // ET_RAT
+        { // ET_GOBLIN
             150,
             30,
             160
@@ -52,7 +52,7 @@ Enemy& game::spawn_enemy(Point p, EnemyType t)
 {
     if(t == ET_LAST) {
         if(defeated_enemies < 5) {
-            t = ET_RAT;
+            t = ET_GOBLIN;
         } else {
             float chance = 0.05f * defeated_enemies;
             if(chance > 0.6f)
@@ -61,7 +61,7 @@ Enemy& game::spawn_enemy(Point p, EnemyType t)
             if(randomf<RNG_Token>() < chance)
                 t = ET_GHOST;
             else
-                t = ET_RAT;
+                t = ET_GOBLIN;
         }
     }
 
@@ -81,7 +81,7 @@ Enemy& game::spawn_enemy(Point p, EnemyType t)
     );
 
     if(enemy.speed() > 80) {
-        activate_hint(H_MOVING_RAT);
+        activate_hint(H_MOVING_ENEMY);
     }
 
     enemy.move_to(p);

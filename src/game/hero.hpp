@@ -33,6 +33,9 @@ namespace game
         //float max_morale = 100;
 
         //int money = 30;
+
+
+        float frame = 0;
     };
 
     Hero& hero();

@@ -17,6 +17,9 @@ namespace game
     void tick_enemy_movement(u32, Enemy&);
 
     extern int speed_mode;
+
+
+    const float frames_per_second = 12;
 }
 
 #endif // INCLUDE_GAME_TICK_HPP
