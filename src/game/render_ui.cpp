@@ -16,8 +16,10 @@ namespace game
 }
 
 
-static const
-string time_controls_path = "assets/time_controls.png";
+static const string
+time_controls_bg_path = "assets/time_controls_gray.png";
+static const string
+time_controls_path = "assets/time_controls_green.png";
 
 
 enum BarIndex
@@ -73,20 +75,21 @@ void game::render_ui_bars()
 
 
     /* Background */
-    int i_bg = BAR_INDEX_LAST;
+    if(false) {
+        int i_bg = BAR_INDEX_LAST;
 
-    SDL_Rect bg_dest {
-        static_cast<int>(screen.x * 0.025),
-        static_cast<int>(screen.y * 0.015),
-        static_cast<int>(screen.x * 0.45),
-        static_cast<int>
-            (screen.y * 0.05 + screen.x * 0.4
-                * tex_size[i_bg].y / tex_size[i_bg].x)
-    };
+        SDL_Rect bg_dest {
+            static_cast<int>(screen.x * 0.025),
+            static_cast<int>(screen.y * 0.015),
+            static_cast<int>(screen.x * 0.45),
+            static_cast<int>
+                (screen.y * 0.05 + screen.x * 0.4
+                 * tex_size[i_bg].y / tex_size[i_bg].x)
+        }; // outdated
 
-    SDL_RenderCopy(rnd, textures[i_bg],
-                   nullptr, &bg_dest);
-
+        SDL_RenderCopy(rnd, textures[i_bg],
+                       nullptr, &bg_dest);
+    }
 
 
     float values[BAR_INDEX_LAST / 2] {
@@ -114,7 +117,7 @@ void game::render_ui_bars()
 
         src.w = size.x;
         src.h = size.y;
-        dest.w = screen.x * 0.4;
+        dest.w = screen.x * 0.35;
         dest.h = dest.w * size.y / size.x;
 
         SDL_RenderCopy(rnd, empty, &src, &dest);
@@ -144,6 +147,8 @@ void game::render_ui_time_controls()
 
         return tex;
     }();
+    static SDL_Texture* background = utils
+        ::load_texture(time_controls_bg_path);
 
     auto screen = screen_size();
     SDL_Rect dest {
@@ -157,21 +162,18 @@ void game::render_ui_time_controls()
     dest.y -= dest.h;
     SDL_Rect src { 0, 0, size.x, size.y };
 
-    auto dest_copy = dest;
-    auto src_copy = src;
 
+    SDL_RenderCopy(rnd, background, &src,
+                                 &dest);
 
-    src.x = src.w;
     src.w /= 4;
+    src.x = speed_mode * src.w;
 
     dest.w /= 4;
     dest.x += dest.w * speed_mode;
 
     SDL_RenderCopy(rnd, texture, &src, &dest);
 
-
-    SDL_RenderCopy(rnd, texture, &src_copy,
-                                 &dest_copy);
 
 }
 
