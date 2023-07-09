@@ -5,8 +5,10 @@
 #include "utils/point.hpp"
 #include "game/tile.hpp"
 #include <unordered_map>
+#include <vector>
 
 using std::unordered_map;
+using std::vector;
 
 
 namespace game
@@ -49,6 +51,12 @@ namespace game
         TileWrapper at(int x, int y);
         TileWrapper at(Point);
 
+        /**
+         * Takes chunk coords (/16).
+         * Returns list of stored chunks.
+         */
+        vector<Point> get_chunks_near(int x, int y,
+                                      int distance);
 
     private:
         struct Chunk
@@ -64,13 +72,18 @@ namespace game
         static ChunkPos hash_chunk_pos(int x, int y);
         static Point unhash_chunk_pos(ChunkPos);
 
+
         /** These functions take chunk coords (16bit) */
+
         /* Can return nullptr */
         Chunk* find_chunk(int x, int y);
+
         /* Creates chunk if not existing*/
         Chunk* get_chunk(int x, int y);
+
         /* Removes chunk if existing */
         void remove_chunk(int x, int y);
+
 
         friend void update_dijkstra_maps();
         friend void tick_tile_values(u32 ms);
