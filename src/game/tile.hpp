@@ -28,7 +28,9 @@ namespace game
         {
             C_NONE,
             C_HERO,
+            //C_MOVING_HERO,
             C_ENEMY,
+            C_MOVING_ENEMY,
             C_TREASURE,
             
             C_LAST
@@ -116,7 +118,7 @@ namespace game
 
         switch(a.content) {
             case Tile::C_NONE:
-            //case Tile::C_ENEMY:
+            case Tile::C_ENEMY:
                 break;
             default:
                 return false;

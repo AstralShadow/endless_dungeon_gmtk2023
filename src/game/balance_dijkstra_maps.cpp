@@ -14,10 +14,10 @@ void game::balance_dijkstra_tile(Point pos)
 {
     balance_dijkstra_tiles({
         pos,
-        {pos.x - 1, pos.y},
-        {pos.x + 1, pos.y},
-        {pos.x, pos.y - 1},
-        {pos.x, pos.y + 1}
+        //{pos.x - 1, pos.y},
+        //{pos.x + 1, pos.y},
+        //{pos.x, pos.y - 1},
+        //{pos.x, pos.y + 1}
     });
 }
 
@@ -67,12 +67,21 @@ balance_dijkstra_tiles(std::set<Point> tiles)
             }
 
             if(can_hero_walk_on(tile)) {
+                if(tile.content != Tile::C_HERO)
                 if(other.interest_path - 1
                      > tile.interest_path)
                 {
                     tile.interest_path
                         = other.interest_path - 1;
                     modified = true;
+                }
+
+                if(tile.content == Tile::C_HERO) {
+                    if(tile.interest_path != 0) {
+                        tile.interest_path = 0;
+                        tile.interest = 0;
+                        modified = true;
+                    }
                 }
             }
 

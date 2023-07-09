@@ -1,6 +1,7 @@
 #include "game/level_generator.hpp"
 #include "game/hero.hpp"
 #include "game/level.hpp"
+#include "game/enemy.hpp"
 #include "utils/trandom.hpp"
 #include <iostream>
 
@@ -31,6 +32,11 @@ void game::spawn_areas()
 {
     if(verbose_log)
         cout << "Attempting area generation." << endl;
+    if(enemies().size() > 7) {
+        cout << "Too many enemies alive." << endl;
+        cout << "New area not generated." << endl;
+        return;
+    }
 
     auto& hero = game::hero();
 

@@ -8,6 +8,7 @@
 
 namespace game
 {
+    struct Tile;
 
     /** Updates all non-wall tiles; Updates map */
     void update_dijkstra_maps();
@@ -27,7 +28,7 @@ namespace game
     bool is_visible(Point t1, Point t2);
 
     /** Controls Dijkstra map value decaying */
-    bool tick_tile_value(Point tile);
+    bool tick_tile_value(Point pos, Tile tile);
     void tick_tile_values(u32 ms);
 }
 

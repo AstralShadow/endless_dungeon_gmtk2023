@@ -2,6 +2,7 @@
 #include "game/level.hpp"
 #include "game/hero.hpp"
 #include <iostream>
+#include <SDL2/SDL_timer.h>
 
 using std::cout;
 using std::endl;
@@ -56,11 +57,10 @@ bool game::update_tile_value(Point pos)
 }
 
 
-bool game::tick_tile_value(Point pos)
+bool game::tick_tile_value(Point pos, Tile tile)
 {
     auto& level = game::level();
 
-    Tile tile = level.at(pos);
     if(tile == default_tile())
         return false;
 
@@ -89,23 +89,28 @@ bool game::tick_tile_value(Point pos)
 void game::tick_tile_values(u32 ms)
 {
     static u32 store = 0;
+    static u32 price = 100;
     store += ms;
-    if(store < 100)
+    if(store < price)
         return;
-    store -= 100;
+    store -= price;
 
+    auto& level = game::level();
 
+    int start = SDL_GetTicks();
     std::set<Point> updated;
-    for(auto& pair : level()._data) {
+    for(auto& pair : level._data) {
         Point _pos = Level::unhash_chunk_pos(pair.first);
 
+        Point c_pos = { _pos.x / 16, _pos.y / 16 };
+        auto chunk = level.get_chunk(c_pos.x, c_pos.y);
         for(int i = 0; i < 256; ++i) {
             Point pos {
                 _pos.x + (i % 16),
                 _pos.y + (i / 16)
             };
 
-            if(tick_tile_value(pos))
+            if(tick_tile_value(pos, chunk->tiles[i]))
                 updated.insert(pos);
         }
     }
@@ -116,4 +121,19 @@ void game::tick_tile_values(u32 ms)
     }
 
     update_dijkstra_maps(updated);
+    int end = SDL_GetTicks();
+
+    int time = end - start;
+    // TODO remote the need of tile ticks.
+    //cout << "Tile tick:" << time << endl;
+    if(time < 5)
+        price = 100;
+    else if(time < 15)
+        price = 200;
+    else if(time < 50)
+        price = 500;
+    else if(time < 150)
+        price = 1000;
+    else
+        price = 2500;
 }

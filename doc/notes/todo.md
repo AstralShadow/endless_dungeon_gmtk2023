@@ -114,6 +114,13 @@ I should prepare and submit the itch page in 4 hours.
 > 11:35
 Added area generator.
 
+> 14:51
+Added enemy movement.
+
+
+> 17:17
+Wasted a good amount of time trying to fix movement
+ and optimize. Which i should've not done.
 
 
 # Utility
@@ -147,7 +154,7 @@ Added area generator.
             `524287/-524288` is the limit when using 32bit chunk position token (16bit per axis) and `16x16` tiles per chunk `2^16 * 16 = 1048576`
     - [x] Rendering level map
         - [ ] Assure border is properly rendered
-    - [ ] Generation of areas
+    - [x] Generation of areas
         - [x] Spawn area
     - [x] Editing
         - [x] User interface
@@ -165,6 +172,7 @@ Added area generator.
     - [x] Movement
         - [x] Animation
     - [ ] Actions
+        - [ ] Attack
         - [ ] Animation?
     - [x] Stats
     - [ ] Behavior

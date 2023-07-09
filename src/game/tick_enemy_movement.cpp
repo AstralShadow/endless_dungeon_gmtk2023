@@ -60,10 +60,12 @@ void game::tick_enemy_movement(u32 ms, Enemy& enemy)
     if(reset_animation) {
         animation_pos.x = 0;
         animation_pos.y = 0;
+        return;
     }
 
 
     /* Fix walking into walls */
+    if(false) // we allocate the tile on move start.
     {
         Point other = pos;
         if(animation_pos.x < 0)
@@ -127,8 +129,9 @@ void game::tick_enemy_movement(u32 ms, Enemy& enemy)
             if(!can_enemy_walk_on(tile))
                 continue;
 
-            if(random < 0.3f * (i + 1)) {
+            if(random < 0.25f * (i + 1)) {
                 index = i;
+                break;
             }
         }
     }
@@ -140,6 +143,18 @@ void game::tick_enemy_movement(u32 ms, Enemy& enemy)
         neighbours[index].x - pos.x,
         neighbours[index].y - pos.y,
     };
+    /* Allocate tile */ {
+        Tile tile = level.at(neighbours[index].x,
+                             neighbours[index].y);
+        tile.content = Tile::C_ENEMY;
+        level.at(neighbours[index].x,
+                 neighbours[index].y) = tile;
+
+        tile = level.at(pos.x, pos.y);
+        tile.content = Tile::C_MOVING_ENEMY;
+        level.at(pos.x, pos.y) = tile;
+
+    }
 
     animation_pos.x += delta.x * motion;
     animation_pos.y += delta.y * motion;

@@ -11,7 +11,13 @@ using game::Entity;
 
 void Entity::move_to(Point _pos)
 {
+    if(this->c_type == Tile::C_HERO)
     if(!can_hero_walk_on(level().at(_pos.x, _pos.y))) {
+        cout << "Tried to walk into wall" << endl;
+        return;
+    }
+    if(this->c_type == Tile::C_ENEMY)
+    if(!can_enemy_walk_on(level().at(_pos.x, _pos.y))) {
         cout << "Tried to walk into wall" << endl;
         return;
     }
@@ -34,6 +40,6 @@ void Entity::move_to(Point _pos)
         level().at(pos.x, pos.y).set(tile);
     }
 
-    update_dijkstra_maps({old_pos, pos});
+    update_dijkstra_maps({pos, old_pos});
 }
 
