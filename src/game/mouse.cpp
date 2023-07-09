@@ -95,8 +95,46 @@ mouse_motion(SDL_MouseMotionEvent& ev, scene_uid)
         int x = pos.x >> 5;
         int y = pos.y >> 5;
         Tile current = level.at(x, y);
-        if(current == default_tile())
+        if(current == default_tile()) {
             level.at(x, y) = path_tile();
+            Point neighbours[] = {
+                {x + 1, y},
+                {x - 1, y},
+                {x, y + 1},
+                {x, y - 1}
+            };
+            Point common[] = {
+                {x + 1, y + 1}, {x + 1, y - 1},
+                {x - 1, y + 1}, {x - 1, y - 1},
+                {x + 1, y + 1}, {x + 1, y + 1},
+                {x - 1, y - 1}, {x - 1, y - 1}
+            };
+
+            bool not_connected = true;
+            for(int i = 0; i < 4; i++) {
+                Tile neighbour =
+                    level.at(neighbours[i]);
+                if(neighbour != default_tile())
+                    not_connected = false;
+            }
+
+            if(not_connected)
+            for(int i = 0; i < 4; i++) {
+                Tile t1 = level.at(common[2 * i]);
+                Tile t2 = level.at(common[2 * i + 1]);
+                if(t1 != default_tile()) {
+                    level.at(neighbours[i])
+                        = path_tile();
+                    break;
+                }
+                if(t2 != default_tile()) {
+                    level.at(neighbours[i])
+                        = path_tile();
+                    break;
+                }
+            }
+            
+        }
     }
 }
 
