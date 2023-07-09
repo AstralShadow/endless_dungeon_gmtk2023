@@ -20,7 +20,9 @@ bool game::update_tile_value(Point pos)
 
     bool modified = false;
 
-    if(pos == hero().pos) {
+    if(pos.y == hero().pos.y
+        && std::abs(pos.x - hero().pos.x) <= 1)
+    {
         if(tile.hero != 0) { 
             tile.hero = 0;
             modified = true;
