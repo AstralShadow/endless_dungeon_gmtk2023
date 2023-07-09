@@ -12,6 +12,7 @@ namespace game
 
     void tick_hero(u32);
     void tick_hero_movement(u32);
+    void tick_hero_attack(u32);
 
     void tick_enemies(u32);
     void tick_enemy_movement(u32, Enemy&);

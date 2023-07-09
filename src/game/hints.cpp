@@ -148,11 +148,34 @@ namespace game {
             ". . .",
             MID_CENTER
         },
-        { //H_GAME_OVER_END
+        { // H_GAME_OVER_END
             "That's it. I can't stand watching this.\n"
-            "                                       \n"
+            "\n"
             "            You're FIRED!              \n"
-            "                                       ",
+            "         ",
+            MID_CENTER
+        },
+
+        { // H_LEVELUP_1
+            "   CONGRATULATIONS!!!\n"
+            "The hero got a levelup.\n"
+            "Such a smart bot i've made. :P",
+            BOTTOM_LEFT
+        },
+        { // H_LEVELUP_2
+            "Another levelup!\n"
+            "When he levels up he gets\n"
+            "Harder, Better, Faster, Stronger.\n"
+            "He also heals",
+            BOTTOM_LEFT
+        }, 
+        { // H_LEVELUP_3
+            "Level UP!\n\n"
+            "Listen. I'm on solid time limit here.\n"
+            "This is written 15m before the deadline.\n"
+            "I can't add any more of these hints.\n\n"
+            "I hope you enjoy the game!\n"
+            "If so, please tell me in the comments.",
             MID_CENTER
         }
     };

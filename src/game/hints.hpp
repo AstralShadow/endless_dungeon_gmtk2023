@@ -53,6 +53,10 @@ namespace game
         H_GAME_OVER_LOOP,
         H_GAME_OVER_END,
 
+        H_LEVELUP_1,
+        H_LEVELUP_2,
+        H_LEVELUP_3,
+
         H_LAST
     };
 

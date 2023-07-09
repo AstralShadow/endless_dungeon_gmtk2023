@@ -17,10 +17,11 @@ namespace game
         float max_health = 100;
         float stamina = 100;
         float max_stamina = 100;
-        float xp = 0;
-        float max_xp = 100;
+        float stamina_regen = 15;
+        float xp = 10;
+        float max_xp = 50;
 
-        int attack = 35;
+        int attack = 15;
 
 
         float speed = 128; // world px/s
@@ -36,6 +37,8 @@ namespace game
 
 
         float frame = 0;
+        bool attacking = false;
+        int attack_mode = 0;
     };
 
     Hero& hero();

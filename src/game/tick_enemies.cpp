@@ -1,6 +1,7 @@
 #include "game/tick.hpp"
 #include "game/enemy.hpp"
 #include "game/hero.hpp"
+#include "game/level.hpp"
 #include <cmath>
 
 
@@ -8,10 +9,33 @@ void game::tick_enemies(u32 ms)
 {
     auto& enemies = game::enemies();
     auto& hero = game::hero();
+    auto& level = game::level();
 
     // Cleanup
     auto itr = enemies.begin();
     while(itr != enemies.end()) {
+
+        if(itr->_health <= 0) {
+            switch(itr->type) {
+                case ET_GOBLIN:
+                    hero.xp += 5;
+                    break;
+                case ET_GHOST:
+                    hero.xp += 15;
+                    break;
+                case ET_LAST:
+                    break;
+            }
+            defeated_enemies++;
+
+            Tile tile = level.at(itr->pos);
+            tile.content = Tile::C_NONE;
+            level.at(itr->pos) = tile;
+
+            itr = enemies.erase(itr);
+            continue;
+        }
+
         Point delta = {
             itr->pos.x - hero.pos.x,
             itr->pos.y - hero.pos.y

@@ -143,6 +143,7 @@ void game::tick_enemy_movement(u32 ms, Enemy& enemy)
         neighbours[index].x - pos.x,
         neighbours[index].y - pos.y,
     };
+
     /* Allocate tile */ {
         Tile tile = level.at(neighbours[index].x,
                              neighbours[index].y);
