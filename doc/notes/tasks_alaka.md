@@ -57,7 +57,7 @@
 - [ ] Player-drawn ground
     - If you want you can make ground that the player adds with different textures
 
-- [ ] Hero (main character)
+- [x] Hero (main character)
     - Size: `64x64` or `64x128`
 
 - [ ] Status bars
