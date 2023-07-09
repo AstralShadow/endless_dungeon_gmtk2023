@@ -60,7 +60,7 @@
 - [x] Hero (main character)
     - Size: `64x64` or `64x128`
 
-- [ ] Status bars
+- [x] Status bars
     - Files: `assets/health_bar_empty.png` `assets/stamina_bar_empty.png` `assets/xp_bar_empty.png` `assets/health_bar.png` `assets/stamina_bar.png` `assets/xp_bar.png`
     - GIMP: `doc/gimp/azcraft/status_bars.xcf`
     - Every bar has empty and normal state.
