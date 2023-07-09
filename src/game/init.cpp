@@ -17,7 +17,7 @@ void game::init(int, char**, scene_uid)
 #endif
 
     generate_spawn();
-    hero().move_to({0, 0});
+    hero().move_to({8, 8});
     update_dijkstra_maps();
 
 #ifdef SKIP_INTRO

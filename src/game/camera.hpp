@@ -11,6 +11,7 @@ namespace game
         FPoint mid {16, 16};
         float zoom = 1.0f;
 
+
         Point pos();
         FPoint fpos();
         Point size();

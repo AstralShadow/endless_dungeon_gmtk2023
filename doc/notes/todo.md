@@ -107,6 +107,11 @@ Currently working on hint text-boxes that will be used
 Added introduction & part of the tutorial as hints.
 Going to take some rest.
 
+> 10:24, 2023-07-09
+Starting with area generation.
+I should prepare and submit the itch page in 4 hours.
+
+
 # Utility
 - [x] Graphic loading
     - [ ] Resource management

@@ -1,4 +1,5 @@
 #include "game/camera.hpp"
+#include "game/tile.hpp"
 #include "utils/screen.hpp"
 
 using game::Camera;
@@ -6,7 +7,10 @@ using game::Camera;
 
 Camera& game::camera()
 {
-    static Camera _camera;
+    static Camera _camera {
+        8.5f * tile_size.x,
+        8.5f * tile_size.y
+    };
     return _camera;
 }
 

@@ -17,7 +17,7 @@ void game::generate_spawn()
     for(int x = -max_range; x <= max_range; x++)
     for(int y = -max_range; y <= max_range; y++) {
         if(std::abs(x) + std::abs(y) < taxicab_limit) {
-            level.at(x, y).set(ground_tile());
+            level.at(x + 8, y + 8).set(ground_tile());
         }
     }
 
