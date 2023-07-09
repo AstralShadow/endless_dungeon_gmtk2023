@@ -3,6 +3,7 @@
 #include "game/navigation.hpp"
 #include "utils/screen.hpp"
 #include "game/hints.hpp"
+#include "game/level_generator.hpp"
 
 int game::speed_mode = 0;
 
@@ -22,4 +23,16 @@ void game::tick(u32 ms, scene_uid)
     ms *= speed_mode;
 
     tick_hero(ms);
+
+    /* Level Generation */
+    if(!spawning_process) {
+        static u32 buffer = 0;
+        buffer += ms;
+        if(buffer > 1000) {
+            buffer -= 1000;
+            spawn_areas();
+        }
+    } else {
+        tick_area_generator(ms);
+    }
 }

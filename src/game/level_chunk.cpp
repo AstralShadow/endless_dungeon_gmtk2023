@@ -36,8 +36,8 @@ get_chunks_near(int _x, int _y, int distance)
 {
     vector<Point> chunks;
 
-    for(int x = _x - distance; x < _x + distance; ++_x)
-    for(int y = _y - distance; y < _y + distance; ++_y) {
+    for(int x = _x - distance; x < _x + distance; ++x)
+    for(int y = _y - distance; y < _y + distance; ++y) {
         if(find_chunk(x, y))
             chunks.push_back({x, y});
     }
