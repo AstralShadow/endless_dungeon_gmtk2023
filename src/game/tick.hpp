@@ -15,6 +15,7 @@ namespace game
 
     void tick_enemies(u32);
     void tick_enemy_movement(u32, Enemy&);
+    void tick_enemy_attack(u32, Enemy&);
 
     extern int speed_mode;
 

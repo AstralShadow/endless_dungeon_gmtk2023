@@ -32,6 +32,7 @@ namespace game
         float speed() { return _speed; }
 
 
+        bool attacking = false;
         float frame = 0;
     };
 

@@ -74,13 +74,13 @@ void game::tick_area_generator(u32 ms)
 
     struct RNG_Token;
 
-    float enemies = randomf<RNG_Token>()
-        * area.size() / 16;
+    float enemies = 1 + randomf<RNG_Token>()
+        * area.size() / 32;
 
     int _enemies = static_cast<int>(enemies);
     while(_enemies > 0) {
         for(Point pos : area) {
-            if(randomf<RNG_Token>() < 0.05) {
+            if(randomf<RNG_Token>() < 0.01) {
                 spawn_enemy(pos);
                 _enemies--;
                 break;

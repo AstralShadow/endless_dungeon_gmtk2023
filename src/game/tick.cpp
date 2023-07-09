@@ -20,10 +20,13 @@ void game::tick(u32 ms, scene_uid)
     tick_tile_values(ms);
 
 
-    ms *= speed_mode;
 
-    tick_hero(ms);
-    tick_enemies(ms);
+    for(int i = 0; i < speed_mode; i++) {
+        tick_hero(ms);
+        tick_enemies(ms);
+    }
+
+    ms *= speed_mode;
 
     /* Level Generation */
     if(!spawning_process) {

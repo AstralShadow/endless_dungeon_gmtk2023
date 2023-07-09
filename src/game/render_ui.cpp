@@ -85,7 +85,7 @@ void game::render_ui_bars()
             static_cast<int>
                 (screen.y * 0.05 + screen.x * 0.4
                  * tex_size[i_bg].y / tex_size[i_bg].x)
-        }; // outdated
+        };
 
         SDL_RenderCopy(rnd, textures[i_bg],
                        nullptr, &bg_dest);
